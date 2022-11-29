@@ -29,6 +29,6 @@ begin
  sreg <= sreg(0) & async_in;
  end if; 
  end process;
-
+--prueba
 
 end Behavioral;
