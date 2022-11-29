@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 24.11.2022 18:34:13
+-- Create Date: 29.11.2022 23:22:29
 -- Design Name: 
--- Module Name: edge_detector - Behavioral
+-- Module Name: PSWRD_BOTON - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,28 +31,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity edge_detector is
+entity PSWRD_BOTON is
+    Port ( IN_PSWRD : in STD_LOGIC;
+           CLK : in STD_LOGIC;
+           CORRECTO : out STD_LOGIC);
+end PSWRD_BOTON;
 
- port ( 
- CLK : in std_logic;
- IN_SYNC : in std_logic;
- OUT_SYNC : out std_logic
- );
-end edge_detector;
+architecture Behavioral of PSWRD_BOTON is
 
-architecture Behavioral of edge_detector is
-
-signal sreg : std_logic_vector(2 downto 0);
 begin
- process (CLK)
- begin
- if rising_edge(CLK) then
- sreg <= sreg(1 downto 0) & IN_SYNC;
- end if; 
- end process;
- with sreg select
- OUT_SYNC <= '1' when "100",
- '0' when others;
 
+
+--MANU HAZLO :)
 
 end Behavioral;

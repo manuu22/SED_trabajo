@@ -33,16 +33,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Principal is
     Port ( SW_estado_caja : in STD_LOGIC;--para ir a abrir caja o cerrarla al instante
-          SW_INTRO_PSWRD : in STD_LOGIC_VECTOR(1 downto 0);--poner contraseña
+         boton: in std_logic;
           CLK : in std_logic;
-           LIGHT : out std_logic_vector(0 TO 6)
+           LIGHT : out std_logic_vector(0 TO 3)
            );
 end Principal;
 
 architecture Behavioral of Principal is
 
-signal s_pswrd_correcta: std_logic;
-
+    signal s_pswrd_correcta: std_logic;
+    signal s_sync: std_logic;
+    signal s_pswrd: std_logic;
 
 COMPONENT estado_caja is
      port (
@@ -53,15 +54,31 @@ COMPONENT estado_caja is
      );
   end COMPONENT;
   
-  COMPONENT PSWRD is
+  COMPONENT EDGE_DETECTOR is
      port (
      CLK : in std_logic;
-     sw_pswrd:in std_logic_vector(1 downto 0);
-     correcto:out std_logic;
-     LIGHT : out std_logic_vector(4 TO 6)
+ IN_EDGE : in std_logic;
+ OUT_EDGE : out std_logic
      );
   end COMPONENT;
-begin
+  
+  COMPONENT SINCRONIZADOR is
+     port (
+     CLK : in std_logic;
+ IN_SYNC : in std_logic;
+ OUT_SYNC : out std_logic
+     );
+  end COMPONENT;
+  
+  COMPONENT PSWRD_BOTON is
+  port (
+     CLK : in std_logic;
+ IN_PSWRD : in std_logic;
+ CORRECTO : out std_logic
+     );
+  end COMPONENT;
+  
+        begin
 
 Inst_estado_caja: estado_caja PORT MAP (
 CLK => CLK,
@@ -70,10 +87,21 @@ PW_RIGTH =>s_pswrd_correcta,
 LIGHT=>LIGHT(0 TO 3)
 );
 
-Inst_PSWRD: PSWRD PORT MAP (
+Inst_SINCRON: SINCRONIZADOR PORT MAP(
 CLK => CLK,
-sw_pswrd =>SW_INTRO_PSWRD,
-correcto =>s_pswrd_correcta,
-LIGHT=>LIGHT(4 TO 6)
+IN_SYNC=>BOTON,
+OUT_SYNC=>s_SYNC
+);
+
+Inst_EDGE_DETEC: EDGE_DETECTOR PORT  MAP(
+CLK => CLK,
+IN_EDGE=>s_sync,
+OUT_EDGE=>s_pswrd
+);
+
+Inst_PSWRD_BOTON: PSWRD_BOTON PORT  MAP(
+CLK => CLK,
+IN_PSWRD=>s_pswrd,
+CORRECTO=>s_pswrd_correcta
 );
 end Behavioral;

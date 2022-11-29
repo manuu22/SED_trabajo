@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity PSWRD is
+entity PSWRD_SW is
  Port ( 
  CLK : in std_logic;
 -- pedir_pswrd:in std_logic;-- señal que llega para que metamos la contraseña(creo que no hace falta)
@@ -39,9 +39,9 @@ entity PSWRD is
   LIGHT : out std_logic_vector(0 TO 2);
  correcto:out std_logic
  );
-end PSWRD;
+end PSWRD_SW;
 
-architecture Behavioral of PSWRD is
+architecture Behavioral of PSWRD_SW is
 
 type STATES is (bien0, bien1, bien2);
  signal current_state: STATES := bien0;

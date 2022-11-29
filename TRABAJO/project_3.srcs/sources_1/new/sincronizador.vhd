@@ -14,8 +14,8 @@ entity sincronizador is
 --  Port ( );
 port ( 
  CLK : in std_logic;
- ASYNC_IN : in std_logic;
- SYNC_OUT : out std_logic
+ IN_EDGE : in std_logic;
+ OUT_EDGE : out std_logic
  );
 end sincronizador;
 
@@ -25,8 +25,8 @@ begin
  process (CLK)
  begin
  if rising_edge(CLK) then 
- sync_out <= sreg(1);
- sreg <= sreg(0) & async_in;
+ OUT_EDGE <= sreg(1);
+ sreg <= sreg(0) & IN_EDGE;
  end if; 
  end process;
 
