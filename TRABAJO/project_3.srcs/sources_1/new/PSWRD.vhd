@@ -36,6 +36,7 @@ entity PSWRD is
  CLK : in std_logic;
 -- pedir_pswrd:in std_logic;-- señal que llega para que metamos la contraseña(creo que no hace falta)
  sw_pswrd:in std_logic_vector(1 downto 0);
+  LIGHT : out std_logic_vector(0 TO 2);
  correcto:out std_logic
  );
 end PSWRD;
@@ -51,7 +52,7 @@ begin
 state_register: process (CLK)
  begin
     if rising_edge(CLK) then
-        current_state<= next_state; 
+        current_state<= next_state;     
     end if;
  end process;
  
@@ -60,12 +61,16 @@ state_register: process (CLK)
  next_state <= current_state;
  case current_state is
     when bien0 =>
-        if sw_pswrd(1) = '1' then 
+        if sw_pswrd(0) = '1' then 
         next_state <= bien1;
         end if;
  when bien1 =>
-        if sw_pswrd(0) = '1' then 
+        if sw_pswrd(1) = '1' then 
         next_state <=bien2;
+        end if; 
+ when bien2 =>   
+        if sw_pswrd(0) = '0' then 
+        next_state <= bien0;   
         end if; 
  when others =>
         next_state <= bien0;
@@ -83,4 +88,18 @@ state_register: process (CLK)
 end case;
 end process;
 
+output_decod_luz: process (current_state)
+ begin
+ LIGHT <= (OTHERS => '0');
+ case current_state is
+    when bien0  =>
+        LIGHT(0) <= '1';
+    when bien1  =>
+        LIGHT(1) <= '1';
+    when bien2 => 
+        LIGHT(2) <= '1';
+     when others => 
+         LIGHT <= (OTHERS => '0');
+end case;
+ end process;
 end Behavioral;

@@ -35,7 +35,7 @@ entity Principal is
     Port ( SW_estado_caja : in STD_LOGIC;--para ir a abrir caja o cerrarla al instante
           SW_INTRO_PSWRD : in STD_LOGIC_VECTOR(1 downto 0);--poner contraseña
           CLK : in std_logic;
-           LIGHT : out std_logic_vector(0 TO 3)
+           LIGHT : out std_logic_vector(0 TO 6)
            );
 end Principal;
 
@@ -57,7 +57,8 @@ COMPONENT estado_caja is
      port (
      CLK : in std_logic;
      sw_pswrd:in std_logic_vector(1 downto 0);
-     correcto:out std_logic
+     correcto:out std_logic;
+     LIGHT : out std_logic_vector(4 TO 6)
      );
   end COMPONENT;
 begin
@@ -66,12 +67,13 @@ Inst_estado_caja: estado_caja PORT MAP (
 CLK => CLK,
 SW_caja =>SW_estado_caja,
 PW_RIGTH =>s_pswrd_correcta,
-LIGHT=>LIGHT
+LIGHT=>LIGHT(0 TO 3)
 );
 
 Inst_PSWRD: PSWRD PORT MAP (
 CLK => CLK,
 sw_pswrd =>SW_INTRO_PSWRD,
-correcto =>s_pswrd_correcta
+correcto =>s_pswrd_correcta,
+LIGHT=>LIGHT(4 TO 6)
 );
 end Behavioral;

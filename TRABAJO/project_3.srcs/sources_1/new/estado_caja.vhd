@@ -46,9 +46,13 @@ begin
         next_state <= C_abriendo;
         end if;
  when C_abriendo =>
-        if SW_caja = '1' AND PW_RIGTH = '1' then 
+        if (SW_caja = '1' AND PW_RIGTH = '1') then 
         next_state <= C_abierta;
         end if; 
+ when C_abierta =>
+    if SW_caja = '0' then 
+        next_state <= C_cerrada;
+     end if;
  when others =>
         next_state <= C_cerrada;
  end case;
@@ -65,6 +69,9 @@ begin
         LIGHT(1) <= '1';
     when C_abierta => 
         LIGHT(2) <= '1';
+        IF PW_RIGTH = '1' then
+            LIGHT(3) <= '1';
+        END IF;
      when others => 
          LIGHT <= (OTHERS => '0');
 end case;
