@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Mon Nov 28 18:06:20 2022
+| Date         : Wed Dec  7 13:33:14 2022
 | Host         : DESKTOP-M41NEHO running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file Principal_timing_summary_routed.rpt -pb Principal_timing_summary_routed.pb -rpx Principal_timing_summary_routed.rpx -warn_on_violation
 | Design       : Principal
@@ -41,7 +41,7 @@ Timing Summary Report
 
 Rule       Severity          Description                  Violations  
 ---------  ----------------  ---------------------------  ----------  
-TIMING-17  Critical Warning  Non-clocked sequential cell  6           
+TIMING-17  Critical Warning  Non-clocked sequential cell  51          
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -51,12 +51,12 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (6)
+1. checking no_clock (51)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (12)
-5. checking no_input_delay (3)
-6. checking no_output_delay (7)
+4. checking unconstrained_internal_endpoints (90)
+5. checking no_input_delay (1)
+6. checking no_output_delay (15)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -64,9 +64,11 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (6)
-------------------------
- There are 6 register/latch pins with no clock driven by root clock pin: CLK (HIGH)
+1. checking no_clock (51)
+-------------------------
+ There are 36 register/latch pins with no clock driven by root clock pin: CLK (HIGH)
+
+ There are 15 register/latch pins with no clock driven by root clock pin: Inst_DECODER/aux_CLK_reg/Q (HIGH)
 
 
 2. checking constant_clock (0)
@@ -79,23 +81,23 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (12)
+4. checking unconstrained_internal_endpoints (90)
 -------------------------------------------------
- There are 12 pins that are not constrained for maximum delay. (HIGH)
+ There are 90 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (3)
+5. checking no_input_delay (1)
 ------------------------------
- There are 3 input ports with no input delay specified. (HIGH)
+ There is 1 input port with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (7)
--------------------------------
- There are 7 ports with no output delay specified. (HIGH)
+6. checking no_output_delay (15)
+--------------------------------
+ There are 15 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -140,7 +142,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-        inf        0.000                      0                   19          inf        0.000                      0                   19           NA           NA                      NA                    NA  
+        inf        0.000                      0                  105          inf        0.000                      0                  105           NA           NA                      NA                    NA  
 
 
 There are no user specified timing constraints.
@@ -209,213 +211,261 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay            19 Endpoints
-Min Delay            19 Endpoints
+Max Delay           105 Endpoints
+Min Delay           105 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 Inst_PSWRD/FSM_onehot_current_state_reg[2]/C
+  Source:                 Inst_DECODER/AN_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            LIGHT[3]
+  Destination:            ANODOS[1]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        9.200ns  (logic 4.273ns (46.448%)  route 4.927ns (53.552%))
-  Logic Levels:           3  (FDRE=1 LUT2=1 OBUF=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y74          FDRE                         0.000     0.000 r  Inst_PSWRD/FSM_onehot_current_state_reg[2]/C
-    SLICE_X0Y74          FDRE (Prop_fdre_C_Q)         0.419     0.419 r  Inst_PSWRD/FSM_onehot_current_state_reg[2]/Q
-                         net (fo=6, routed)           1.835     2.254    Inst_estado_caja/FSM_onehot_current_state_reg[0]_0[0]
-    SLICE_X0Y101         LUT2 (Prop_lut2_I1_O)        0.299     2.553 r  Inst_estado_caja/LIGHT_OBUF[3]_inst_i_1/O
-                         net (fo=1, routed)           3.092     5.645    LIGHT_OBUF[3]
-    U16                  OBUF (Prop_obuf_I_O)         3.555     9.200 r  LIGHT_OBUF[3]_inst/O
-                         net (fo=0)                   0.000     9.200    LIGHT[3]
-    U16                                                               r  LIGHT[3] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 Inst_PSWRD/FSM_onehot_current_state_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            LIGHT[6]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.475ns  (logic 4.163ns (64.294%)  route 2.312ns (35.706%))
+  Data Path Delay:        7.125ns  (logic 4.030ns (56.566%)  route 3.095ns (43.434%))
   Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y74          FDRE                         0.000     0.000 r  Inst_PSWRD/FSM_onehot_current_state_reg[2]/C
-    SLICE_X0Y74          FDRE (Prop_fdre_C_Q)         0.419     0.419 r  Inst_PSWRD/FSM_onehot_current_state_reg[2]/Q
-                         net (fo=6, routed)           2.312     2.731    LIGHT_OBUF[6]
-    V11                  OBUF (Prop_obuf_I_O)         3.744     6.475 r  LIGHT_OBUF[6]_inst/O
-                         net (fo=0)                   0.000     6.475    LIGHT[6]
-    V11                                                               r  LIGHT[6] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 Inst_PSWRD/FSM_onehot_current_state_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            LIGHT[4]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.337ns  (logic 4.010ns (63.281%)  route 2.327ns (36.719%))
-  Logic Levels:           2  (FDRE=1 OBUF=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y74          FDRE                         0.000     0.000 r  Inst_PSWRD/FSM_onehot_current_state_reg[0]/C
-    SLICE_X0Y74          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  Inst_PSWRD/FSM_onehot_current_state_reg[0]/Q
-                         net (fo=4, routed)           2.327     2.783    LIGHT_OBUF[4]
-    V14                  OBUF (Prop_obuf_I_O)         3.554     6.337 r  LIGHT_OBUF[4]_inst/O
-                         net (fo=0)                   0.000     6.337    LIGHT[4]
-    V14                                                               r  LIGHT[4] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 Inst_PSWRD/FSM_onehot_current_state_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            LIGHT[5]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.188ns  (logic 4.026ns (65.072%)  route 2.161ns (34.928%))
-  Logic Levels:           2  (FDRE=1 OBUF=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y74          FDRE                         0.000     0.000 r  Inst_PSWRD/FSM_onehot_current_state_reg[1]/C
-    SLICE_X0Y74          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  Inst_PSWRD/FSM_onehot_current_state_reg[1]/Q
-                         net (fo=4, routed)           2.161     2.617    LIGHT_OBUF[5]
-    V12                  OBUF (Prop_obuf_I_O)         3.570     6.188 r  LIGHT_OBUF[5]_inst/O
-                         net (fo=0)                   0.000     6.188    LIGHT[5]
-    V12                                                               r  LIGHT[5] (OUT)
+    SLICE_X0Y89          FDRE                         0.000     0.000 r  Inst_DECODER/AN_reg[1]/C
+    SLICE_X0Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  Inst_DECODER/AN_reg[1]/Q
+                         net (fo=1, routed)           3.095     3.551    ANODOS_OBUF[1]
+    T9                   OBUF (Prop_obuf_I_O)         3.574     7.125 r  ANODOS_OBUF[1]_inst/O
+                         net (fo=0)                   0.000     7.125    ANODOS[1]
+    T9                                                                r  ANODOS[1] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 Inst_estado_caja/FSM_onehot_current_state_reg[2]/C
                             (rising edge-triggered cell FDCE)
-  Destination:            LIGHT[2]
+  Destination:            LIGHT[3]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.158ns  (logic 4.009ns (65.097%)  route 2.149ns (34.903%))
+  Data Path Delay:        6.996ns  (logic 4.011ns (57.339%)  route 2.984ns (42.661%))
   Logic Levels:           2  (FDCE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
     SLICE_X0Y101         FDCE                         0.000     0.000 r  Inst_estado_caja/FSM_onehot_current_state_reg[2]/C
     SLICE_X0Y101         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  Inst_estado_caja/FSM_onehot_current_state_reg[2]/Q
-                         net (fo=4, routed)           2.149     2.605    LIGHT_OBUF[2]
-    J13                  OBUF (Prop_obuf_I_O)         3.553     6.158 r  LIGHT_OBUF[2]_inst/O
-                         net (fo=0)                   0.000     6.158    LIGHT[2]
-    J13                                                               r  LIGHT[2] (OUT)
+                         net (fo=4, routed)           2.984     3.440    LIGHT_OBUF[3]
+    U16                  OBUF (Prop_obuf_I_O)         3.555     6.996 r  LIGHT_OBUF[3]_inst/O
+                         net (fo=0)                   0.000     6.996    LIGHT[3]
+    U16                                                               r  LIGHT[3] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
-                            (rising edge-triggered cell FDPE)
-  Destination:            LIGHT[0]
+  Source:                 Inst_DECODER/seg_disp_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            segmentos[1]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.073ns  (logic 3.976ns (65.475%)  route 2.097ns (34.525%))
-  Logic Levels:           2  (FDPE=1 OBUF=1)
+  Data Path Delay:        6.983ns  (logic 4.011ns (57.449%)  route 2.971ns (42.551%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y101         FDPE                         0.000     0.000 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
-    SLICE_X0Y101         FDPE (Prop_fdpe_C_Q)         0.456     0.456 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/Q
-                         net (fo=4, routed)           2.097     2.553    LIGHT_OBUF[0]
-    H17                  OBUF (Prop_obuf_I_O)         3.520     6.073 r  LIGHT_OBUF[0]_inst/O
-                         net (fo=0)                   0.000     6.073    LIGHT[0]
-    H17                                                               r  LIGHT[0] (OUT)
+    SLICE_X0Y89          FDRE                         0.000     0.000 r  Inst_DECODER/seg_disp_reg[1]/C
+    SLICE_X0Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  Inst_DECODER/seg_disp_reg[1]/Q
+                         net (fo=1, routed)           2.971     3.427    segmentos_OBUF[1]
+    R10                  OBUF (Prop_obuf_I_O)         3.555     6.983 r  segmentos_OBUF[1]_inst/O
+                         net (fo=0)                   0.000     6.983    segmentos[1]
+    R10                                                               r  segmentos[1] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 Inst_estado_caja/FSM_onehot_current_state_reg[1]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            LIGHT[1]
+  Source:                 Inst_DECODER/seg_disp_reg[0]/C
+                            (rising edge-triggered cell FDSE)
+  Destination:            segmentos[0]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        5.690ns  (logic 3.991ns (70.141%)  route 1.699ns (29.859%))
-  Logic Levels:           2  (FDCE=1 OBUF=1)
+  Data Path Delay:        6.871ns  (logic 4.033ns (58.695%)  route 2.838ns (41.305%))
+  Logic Levels:           2  (FDSE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y101         FDCE                         0.000     0.000 r  Inst_estado_caja/FSM_onehot_current_state_reg[1]/C
-    SLICE_X0Y101         FDCE (Prop_fdce_C_Q)         0.456     0.456 r  Inst_estado_caja/FSM_onehot_current_state_reg[1]/Q
-                         net (fo=4, routed)           1.699     2.155    LIGHT_OBUF[1]
-    K15                  OBUF (Prop_obuf_I_O)         3.535     5.690 r  LIGHT_OBUF[1]_inst/O
-                         net (fo=0)                   0.000     5.690    LIGHT[1]
-    K15                                                               r  LIGHT[1] (OUT)
+    SLICE_X3Y90          FDSE                         0.000     0.000 r  Inst_DECODER/seg_disp_reg[0]/C
+    SLICE_X3Y90          FDSE (Prop_fdse_C_Q)         0.456     0.456 r  Inst_DECODER/seg_disp_reg[0]/Q
+                         net (fo=1, routed)           2.838     3.294    segmentos_OBUF[0]
+    T10                  OBUF (Prop_obuf_I_O)         3.577     6.871 r  segmentos_OBUF[0]_inst/O
+                         net (fo=0)                   0.000     6.871    segmentos[0]
+    T10                                                               r  segmentos[0] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SW_INTRO_PSWRD[0]
-                            (input port)
-  Destination:            Inst_PSWRD/FSM_onehot_current_state_reg[2]/D
+  Source:                 Inst_DECODER/seg_disp_reg[5]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            segmentos[5]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        3.444ns  (logic 1.630ns (47.321%)  route 1.814ns (52.679%))
-  Logic Levels:           2  (IBUF=1 LUT5=1)
+  Data Path Delay:        6.722ns  (logic 4.155ns (61.810%)  route 2.567ns (38.190%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    L16                                               0.000     0.000 r  SW_INTRO_PSWRD[0] (IN)
-                         net (fo=0)                   0.000     0.000    SW_INTRO_PSWRD[0]
-    L16                  IBUF (Prop_ibuf_I_O)         1.480     1.480 r  SW_INTRO_PSWRD_IBUF[0]_inst/O
-                         net (fo=3, routed)           1.814     3.294    Inst_PSWRD/SW_INTRO_PSWRD_IBUF[0]
-    SLICE_X0Y74          LUT5 (Prop_lut5_I0_O)        0.150     3.444 r  Inst_PSWRD/FSM_onehot_current_state[2]_i_1/O
-                         net (fo=1, routed)           0.000     3.444    Inst_PSWRD/FSM_onehot_current_state[2]_i_1_n_0
-    SLICE_X0Y74          FDRE                                         r  Inst_PSWRD/FSM_onehot_current_state_reg[2]/D
+    SLICE_X0Y90          FDRE                         0.000     0.000 r  Inst_DECODER/seg_disp_reg[5]/C
+    SLICE_X0Y90          FDRE (Prop_fdre_C_Q)         0.419     0.419 r  Inst_DECODER/seg_disp_reg[5]/Q
+                         net (fo=1, routed)           2.567     2.986    segmentos_OBUF[5]
+    T11                  OBUF (Prop_obuf_I_O)         3.736     6.722 r  segmentos_OBUF[5]_inst/O
+                         net (fo=0)                   0.000     6.722    segmentos[5]
+    T11                                                               r  segmentos[5] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SW_estado_caja
-                            (input port)
-  Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[0]/PRE
+  Source:                 Inst_DECODER/seg_disp_reg[3]_lopt_replica/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            segmentos[3]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        3.442ns  (logic 1.602ns (46.534%)  route 1.840ns (53.466%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Data Path Delay:        6.321ns  (logic 4.006ns (63.379%)  route 2.315ns (36.621%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    J15                                               0.000     0.000 r  SW_estado_caja (IN)
-                         net (fo=0)                   0.000     0.000    SW_estado_caja
-    J15                  IBUF (Prop_ibuf_I_O)         1.478     1.478 r  SW_estado_caja_IBUF_inst/O
-                         net (fo=3, routed)           1.259     2.737    Inst_estado_caja/SW_estado_caja_IBUF
-    SLICE_X0Y101         LUT1 (Prop_lut1_I0_O)        0.124     2.861 f  Inst_estado_caja/FSM_onehot_current_state[2]_i_1__0/O
-                         net (fo=3, routed)           0.581     3.442    Inst_estado_caja/FSM_onehot_current_state[2]_i_1__0_n_0
-    SLICE_X0Y101         FDPE                                         f  Inst_estado_caja/FSM_onehot_current_state_reg[0]/PRE
+    SLICE_X0Y93          FDRE                         0.000     0.000 r  Inst_DECODER/seg_disp_reg[3]_lopt_replica/C
+    SLICE_X0Y93          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  Inst_DECODER/seg_disp_reg[3]_lopt_replica/Q
+                         net (fo=1, routed)           2.315     2.771    lopt
+    K13                  OBUF (Prop_obuf_I_O)         3.550     6.321 r  segmentos_OBUF[3]_inst/O
+                         net (fo=0)                   0.000     6.321    segmentos[3]
+    K13                                                               r  segmentos[3] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SW_estado_caja
-                            (input port)
-  Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[1]/CLR
+  Source:                 Inst_DECODER/AN_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            ANODOS[0]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        3.442ns  (logic 1.602ns (46.534%)  route 1.840ns (53.466%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Data Path Delay:        6.314ns  (logic 4.008ns (63.482%)  route 2.306ns (36.518%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    J15                                               0.000     0.000 r  SW_estado_caja (IN)
-                         net (fo=0)                   0.000     0.000    SW_estado_caja
-    J15                  IBUF (Prop_ibuf_I_O)         1.478     1.478 r  SW_estado_caja_IBUF_inst/O
-                         net (fo=3, routed)           1.259     2.737    Inst_estado_caja/SW_estado_caja_IBUF
-    SLICE_X0Y101         LUT1 (Prop_lut1_I0_O)        0.124     2.861 f  Inst_estado_caja/FSM_onehot_current_state[2]_i_1__0/O
-                         net (fo=3, routed)           0.581     3.442    Inst_estado_caja/FSM_onehot_current_state[2]_i_1__0_n_0
-    SLICE_X0Y101         FDCE                                         f  Inst_estado_caja/FSM_onehot_current_state_reg[1]/CLR
+    SLICE_X0Y91          FDRE                         0.000     0.000 r  Inst_DECODER/AN_reg[0]/C
+    SLICE_X0Y91          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  Inst_DECODER/AN_reg[0]/Q
+                         net (fo=1, routed)           2.306     2.762    ANODOS_OBUF[0]
+    J14                  OBUF (Prop_obuf_I_O)         3.552     6.314 r  ANODOS_OBUF[0]_inst/O
+                         net (fo=0)                   0.000     6.314    ANODOS[0]
+    J14                                                               r  ANODOS[0] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/seg_disp_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            segmentos[4]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        6.292ns  (logic 3.990ns (63.402%)  route 2.303ns (36.598%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y89          FDRE                         0.000     0.000 r  Inst_DECODER/seg_disp_reg[3]/C
+    SLICE_X0Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  Inst_DECODER/seg_disp_reg[3]/Q
+                         net (fo=1, routed)           2.303     2.759    segmentos_OBUF[4]
+    P15                  OBUF (Prop_obuf_I_O)         3.534     6.292 r  segmentos_OBUF[4]_inst/O
+                         net (fo=0)                   0.000     6.292    segmentos[4]
+    P15                                                               r  segmentos[4] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/CLK_aux.cont_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/CLK_aux.cont_reg[0]/R
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        6.200ns  (logic 2.548ns (41.099%)  route 3.652ns (58.901%))
+  Logic Levels:           11  (CARRY4=8 FDRE=1 LUT2=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y89          FDRE                         0.000     0.000 r  Inst_DECODER/CLK_aux.cont_reg[1]/C
+    SLICE_X1Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  Inst_DECODER/CLK_aux.cont_reg[1]/Q
+                         net (fo=2, routed)           0.667     1.123    Inst_DECODER/CLK_aux.cont_reg[1]
+    SLICE_X2Y89          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     1.760 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_17/CO[3]
+                         net (fo=1, routed)           0.000     1.760    Inst_DECODER/CLK_aux.cont_reg[0]_i_17_n_0
+    SLICE_X2Y90          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.877 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_13/CO[3]
+                         net (fo=1, routed)           0.000     1.877    Inst_DECODER/CLK_aux.cont_reg[0]_i_13_n_0
+    SLICE_X2Y91          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.994 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_14/CO[3]
+                         net (fo=1, routed)           0.000     1.994    Inst_DECODER/CLK_aux.cont_reg[0]_i_14_n_0
+    SLICE_X2Y92          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.111 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_16/CO[3]
+                         net (fo=1, routed)           0.000     2.111    Inst_DECODER/CLK_aux.cont_reg[0]_i_16_n_0
+    SLICE_X2Y93          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.228 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_15/CO[3]
+                         net (fo=1, routed)           0.000     2.228    Inst_DECODER/CLK_aux.cont_reg[0]_i_15_n_0
+    SLICE_X2Y94          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.345 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.345    Inst_DECODER/CLK_aux.cont_reg[0]_i_10_n_0
+    SLICE_X2Y95          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.462 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_11/CO[3]
+                         net (fo=1, routed)           0.000     2.462    Inst_DECODER/CLK_aux.cont_reg[0]_i_11_n_0
+    SLICE_X2Y96          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     2.785 f  Inst_DECODER/CLK_aux.cont_reg[0]_i_12/O[1]
+                         net (fo=1, routed)           0.579     3.364    Inst_DECODER/p_0_in[30]
+    SLICE_X3Y96          LUT2 (Prop_lut2_I0_O)        0.306     3.670 f  Inst_DECODER/CLK_aux.cont[0]_i_7/O
+                         net (fo=1, routed)           0.941     4.612    Inst_DECODER/CLK_aux.cont[0]_i_7_n_0
+    SLICE_X3Y93          LUT6 (Prop_lut6_I4_O)        0.124     4.736 r  Inst_DECODER/CLK_aux.cont[0]_i_1/O
+                         net (fo=33, routed)          1.464     6.200    Inst_DECODER/clear
+    SLICE_X1Y89          FDRE                                         r  Inst_DECODER/CLK_aux.cont_reg[0]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/CLK_aux.cont_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/CLK_aux.cont_reg[1]/R
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        6.200ns  (logic 2.548ns (41.099%)  route 3.652ns (58.901%))
+  Logic Levels:           11  (CARRY4=8 FDRE=1 LUT2=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y89          FDRE                         0.000     0.000 r  Inst_DECODER/CLK_aux.cont_reg[1]/C
+    SLICE_X1Y89          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  Inst_DECODER/CLK_aux.cont_reg[1]/Q
+                         net (fo=2, routed)           0.667     1.123    Inst_DECODER/CLK_aux.cont_reg[1]
+    SLICE_X2Y89          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637     1.760 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_17/CO[3]
+                         net (fo=1, routed)           0.000     1.760    Inst_DECODER/CLK_aux.cont_reg[0]_i_17_n_0
+    SLICE_X2Y90          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.877 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_13/CO[3]
+                         net (fo=1, routed)           0.000     1.877    Inst_DECODER/CLK_aux.cont_reg[0]_i_13_n_0
+    SLICE_X2Y91          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.994 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_14/CO[3]
+                         net (fo=1, routed)           0.000     1.994    Inst_DECODER/CLK_aux.cont_reg[0]_i_14_n_0
+    SLICE_X2Y92          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.111 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_16/CO[3]
+                         net (fo=1, routed)           0.000     2.111    Inst_DECODER/CLK_aux.cont_reg[0]_i_16_n_0
+    SLICE_X2Y93          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.228 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_15/CO[3]
+                         net (fo=1, routed)           0.000     2.228    Inst_DECODER/CLK_aux.cont_reg[0]_i_15_n_0
+    SLICE_X2Y94          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.345 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.345    Inst_DECODER/CLK_aux.cont_reg[0]_i_10_n_0
+    SLICE_X2Y95          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.462 r  Inst_DECODER/CLK_aux.cont_reg[0]_i_11/CO[3]
+                         net (fo=1, routed)           0.000     2.462    Inst_DECODER/CLK_aux.cont_reg[0]_i_11_n_0
+    SLICE_X2Y96          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     2.785 f  Inst_DECODER/CLK_aux.cont_reg[0]_i_12/O[1]
+                         net (fo=1, routed)           0.579     3.364    Inst_DECODER/p_0_in[30]
+    SLICE_X3Y96          LUT2 (Prop_lut2_I0_O)        0.306     3.670 f  Inst_DECODER/CLK_aux.cont[0]_i_7/O
+                         net (fo=1, routed)           0.941     4.612    Inst_DECODER/CLK_aux.cont[0]_i_7_n_0
+    SLICE_X3Y93          LUT6 (Prop_lut6_I4_O)        0.124     4.736 r  Inst_DECODER/CLK_aux.cont[0]_i_1/O
+                         net (fo=33, routed)          1.464     6.200    Inst_DECODER/clear
+    SLICE_X1Y89          FDRE                                         r  Inst_DECODER/CLK_aux.cont_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
 
@@ -430,185 +480,189 @@ Slack:                    inf
   Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[1]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.297ns  (logic 0.141ns (47.424%)  route 0.156ns (52.576%))
+  Data Path Delay:        0.243ns  (logic 0.141ns (58.047%)  route 0.102ns (41.953%))
   Logic Levels:           1  (FDPE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
     SLICE_X0Y101         FDPE                         0.000     0.000 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
     SLICE_X0Y101         FDPE (Prop_fdpe_C_Q)         0.141     0.141 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/Q
-                         net (fo=4, routed)           0.156     0.297    Inst_estado_caja/LIGHT_OBUF[3]
+                         net (fo=4, routed)           0.102     0.243    Inst_estado_caja/Q[0]
     SLICE_X0Y101         FDCE                                         r  Inst_estado_caja/FSM_onehot_current_state_reg[1]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 Inst_PSWRD/FSM_onehot_current_state_reg[2]/C
+  Source:                 Inst_DECODER/bucle_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            Inst_PSWRD/FSM_onehot_current_state_reg[0]/D
+  Destination:            Inst_DECODER/seg_disp_reg[0]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.322ns  (logic 0.227ns (70.440%)  route 0.095ns (29.560%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
+  Data Path Delay:        0.303ns  (logic 0.209ns (68.923%)  route 0.094ns (31.077%))
+  Logic Levels:           2  (FDRE=1 LUT3=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y74          FDRE                         0.000     0.000 r  Inst_PSWRD/FSM_onehot_current_state_reg[2]/C
-    SLICE_X0Y74          FDRE (Prop_fdre_C_Q)         0.128     0.128 r  Inst_PSWRD/FSM_onehot_current_state_reg[2]/Q
-                         net (fo=6, routed)           0.095     0.223    Inst_PSWRD/LIGHT_OBUF[0]
-    SLICE_X0Y74          LUT5 (Prop_lut5_I1_O)        0.099     0.322 r  Inst_PSWRD/FSM_onehot_current_state[0]_i_1/O
-                         net (fo=1, routed)           0.000     0.322    Inst_PSWRD/FSM_onehot_current_state[0]_i_1_n_0
-    SLICE_X0Y74          FDRE                                         r  Inst_PSWRD/FSM_onehot_current_state_reg[0]/D
+    SLICE_X2Y90          FDRE                         0.000     0.000 r  Inst_DECODER/bucle_reg[1]/C
+    SLICE_X2Y90          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  Inst_DECODER/bucle_reg[1]/Q
+                         net (fo=11, routed)          0.094     0.258    Inst_DECODER/bucle[1]
+    SLICE_X3Y90          LUT3 (Prop_lut3_I1_O)        0.045     0.303 r  Inst_DECODER/seg_disp[0]_i_2/O
+                         net (fo=1, routed)           0.000     0.303    Inst_DECODER/seg_disp[0]_i_2_n_0
+    SLICE_X3Y90          FDSE                                         r  Inst_DECODER/seg_disp_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/bucle_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/bucle_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.305ns  (logic 0.164ns (53.788%)  route 0.141ns (46.212%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y90          FDRE                         0.000     0.000 r  Inst_DECODER/bucle_reg[1]/C
+    SLICE_X2Y90          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  Inst_DECODER/bucle_reg[1]/Q
+                         net (fo=11, routed)          0.141     0.305    Inst_DECODER/bucle[1]
+    SLICE_X0Y90          FDRE                                         r  Inst_DECODER/bucle_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/bucle_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/AN_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.319ns  (logic 0.227ns (71.232%)  route 0.092ns (28.768%))
+  Logic Levels:           2  (FDRE=1 LUT4=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y89          FDRE                         0.000     0.000 r  Inst_DECODER/bucle_reg[0]/C
+    SLICE_X0Y89          FDRE (Prop_fdre_C_Q)         0.128     0.128 r  Inst_DECODER/bucle_reg[0]/Q
+                         net (fo=11, routed)          0.092     0.220    Inst_DECODER/bucle[0]
+    SLICE_X0Y89          LUT4 (Prop_lut4_I1_O)        0.099     0.319 r  Inst_DECODER/AN[1]_i_1/O
+                         net (fo=1, routed)           0.000     0.319    Inst_DECODER/AN[1]_i_1_n_0
+    SLICE_X0Y89          FDRE                                         r  Inst_DECODER/AN_reg[1]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 Inst_estado_caja/FSM_onehot_current_state_reg[1]/C
                             (rising edge-triggered cell FDCE)
-  Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[2]/D
+  Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[0]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.345ns  (logic 0.141ns (40.825%)  route 0.204ns (59.175%))
-  Logic Levels:           1  (FDCE=1)
+  Data Path Delay:        0.337ns  (logic 0.227ns (67.440%)  route 0.110ns (32.560%))
+  Logic Levels:           2  (FDCE=1 LUT4=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
     SLICE_X0Y101         FDCE                         0.000     0.000 r  Inst_estado_caja/FSM_onehot_current_state_reg[1]/C
-    SLICE_X0Y101         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  Inst_estado_caja/FSM_onehot_current_state_reg[1]/Q
-                         net (fo=4, routed)           0.204     0.345    Inst_estado_caja/LIGHT_OBUF[2]
-    SLICE_X0Y101         FDCE                                         r  Inst_estado_caja/FSM_onehot_current_state_reg[2]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 Inst_PSWRD/FSM_onehot_current_state_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            Inst_PSWRD/FSM_onehot_current_state_reg[2]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.381ns  (logic 0.183ns (48.023%)  route 0.198ns (51.977%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y74          FDRE                         0.000     0.000 r  Inst_PSWRD/FSM_onehot_current_state_reg[1]/C
-    SLICE_X0Y74          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_PSWRD/FSM_onehot_current_state_reg[1]/Q
-                         net (fo=4, routed)           0.198     0.339    Inst_PSWRD/LIGHT_OBUF[1]
-    SLICE_X0Y74          LUT5 (Prop_lut5_I3_O)        0.042     0.381 r  Inst_PSWRD/FSM_onehot_current_state[2]_i_1/O
-                         net (fo=1, routed)           0.000     0.381    Inst_PSWRD/FSM_onehot_current_state[2]_i_1_n_0
-    SLICE_X0Y74          FDRE                                         r  Inst_PSWRD/FSM_onehot_current_state_reg[2]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 Inst_PSWRD/FSM_onehot_current_state_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            Inst_PSWRD/FSM_onehot_current_state_reg[1]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.384ns  (logic 0.186ns (48.429%)  route 0.198ns (51.571%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y74          FDRE                         0.000     0.000 r  Inst_PSWRD/FSM_onehot_current_state_reg[1]/C
-    SLICE_X0Y74          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_PSWRD/FSM_onehot_current_state_reg[1]/Q
-                         net (fo=4, routed)           0.198     0.339    Inst_PSWRD/LIGHT_OBUF[1]
-    SLICE_X0Y74          LUT5 (Prop_lut5_I3_O)        0.045     0.384 r  Inst_PSWRD/FSM_onehot_current_state[1]_i_1/O
-                         net (fo=1, routed)           0.000     0.384    Inst_PSWRD/FSM_onehot_current_state[1]_i_1_n_0
-    SLICE_X0Y74          FDRE                                         r  Inst_PSWRD/FSM_onehot_current_state_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
-                            (rising edge-triggered cell FDPE)
-  Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[0]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.392ns  (logic 0.183ns (46.688%)  route 0.209ns (53.312%))
-  Logic Levels:           2  (FDPE=1 LUT4=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y101         FDPE                         0.000     0.000 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
-    SLICE_X0Y101         FDPE (Prop_fdpe_C_Q)         0.141     0.141 f  Inst_estado_caja/FSM_onehot_current_state_reg[0]/Q
-                         net (fo=4, routed)           0.209     0.350    Inst_estado_caja/LIGHT_OBUF[3]
-    SLICE_X0Y101         LUT4 (Prop_lut4_I2_O)        0.042     0.392 r  Inst_estado_caja//i_/O
-                         net (fo=1, routed)           0.000     0.392    Inst_estado_caja//i__n_0
+    SLICE_X0Y101         FDCE (Prop_fdce_C_Q)         0.128     0.128 f  Inst_estado_caja/FSM_onehot_current_state_reg[1]/Q
+                         net (fo=4, routed)           0.110     0.238    Inst_estado_caja/Q[1]
+    SLICE_X0Y101         LUT4 (Prop_lut4_I3_O)        0.099     0.337 r  Inst_estado_caja//i_/O
+                         net (fo=1, routed)           0.000     0.337    Inst_estado_caja//i__n_0
     SLICE_X0Y101         FDPE                                         r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
-                            (rising edge-triggered cell FDPE)
-  Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[0]/CE
+  Source:                 Inst_DECODER/CLK_aux.cont_reg[11]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/CLK_aux.cont_reg[11]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.584ns  (logic 0.186ns (31.857%)  route 0.398ns (68.143%))
-  Logic Levels:           2  (FDPE=1 LUT5=1)
+  Data Path Delay:        0.369ns  (logic 0.249ns (67.424%)  route 0.120ns (32.576%))
+  Logic Levels:           2  (CARRY4=1 FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y101         FDPE                         0.000     0.000 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
-    SLICE_X0Y101         FDPE (Prop_fdpe_C_Q)         0.141     0.141 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/Q
-                         net (fo=4, routed)           0.198     0.339    Inst_estado_caja/LIGHT_OBUF[3]
-    SLICE_X0Y101         LUT5 (Prop_lut5_I1_O)        0.045     0.384 r  Inst_estado_caja/next_state/O
-                         net (fo=3, routed)           0.200     0.584    Inst_estado_caja/next_state_n_0
-    SLICE_X0Y101         FDPE                                         r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/CE
+    SLICE_X1Y91          FDRE                         0.000     0.000 r  Inst_DECODER/CLK_aux.cont_reg[11]/C
+    SLICE_X1Y91          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/CLK_aux.cont_reg[11]/Q
+                         net (fo=2, routed)           0.120     0.261    Inst_DECODER/CLK_aux.cont_reg[11]
+    SLICE_X1Y91          CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     0.369 r  Inst_DECODER/CLK_aux.cont_reg[8]_i_1/O[3]
+                         net (fo=1, routed)           0.000     0.369    Inst_DECODER/CLK_aux.cont_reg[8]_i_1_n_4
+    SLICE_X1Y91          FDRE                                         r  Inst_DECODER/CLK_aux.cont_reg[11]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
-                            (rising edge-triggered cell FDPE)
-  Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[1]/CE
+  Source:                 Inst_DECODER/CLK_aux.cont_reg[15]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/CLK_aux.cont_reg[15]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.584ns  (logic 0.186ns (31.857%)  route 0.398ns (68.143%))
-  Logic Levels:           2  (FDPE=1 LUT5=1)
+  Data Path Delay:        0.369ns  (logic 0.249ns (67.424%)  route 0.120ns (32.576%))
+  Logic Levels:           2  (CARRY4=1 FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y101         FDPE                         0.000     0.000 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
-    SLICE_X0Y101         FDPE (Prop_fdpe_C_Q)         0.141     0.141 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/Q
-                         net (fo=4, routed)           0.198     0.339    Inst_estado_caja/LIGHT_OBUF[3]
-    SLICE_X0Y101         LUT5 (Prop_lut5_I1_O)        0.045     0.384 r  Inst_estado_caja/next_state/O
-                         net (fo=3, routed)           0.200     0.584    Inst_estado_caja/next_state_n_0
-    SLICE_X0Y101         FDCE                                         r  Inst_estado_caja/FSM_onehot_current_state_reg[1]/CE
+    SLICE_X1Y92          FDRE                         0.000     0.000 r  Inst_DECODER/CLK_aux.cont_reg[15]/C
+    SLICE_X1Y92          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/CLK_aux.cont_reg[15]/Q
+                         net (fo=2, routed)           0.120     0.261    Inst_DECODER/CLK_aux.cont_reg[15]
+    SLICE_X1Y92          CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     0.369 r  Inst_DECODER/CLK_aux.cont_reg[12]_i_1/O[3]
+                         net (fo=1, routed)           0.000     0.369    Inst_DECODER/CLK_aux.cont_reg[12]_i_1_n_4
+    SLICE_X1Y92          FDRE                                         r  Inst_DECODER/CLK_aux.cont_reg[15]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
-                            (rising edge-triggered cell FDPE)
-  Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[2]/CE
+  Source:                 Inst_DECODER/CLK_aux.cont_reg[19]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/CLK_aux.cont_reg[19]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.584ns  (logic 0.186ns (31.857%)  route 0.398ns (68.143%))
-  Logic Levels:           2  (FDPE=1 LUT5=1)
+  Data Path Delay:        0.369ns  (logic 0.249ns (67.424%)  route 0.120ns (32.576%))
+  Logic Levels:           2  (CARRY4=1 FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X0Y101         FDPE                         0.000     0.000 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
-    SLICE_X0Y101         FDPE (Prop_fdpe_C_Q)         0.141     0.141 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/Q
-                         net (fo=4, routed)           0.198     0.339    Inst_estado_caja/LIGHT_OBUF[3]
-    SLICE_X0Y101         LUT5 (Prop_lut5_I1_O)        0.045     0.384 r  Inst_estado_caja/next_state/O
-                         net (fo=3, routed)           0.200     0.584    Inst_estado_caja/next_state_n_0
-    SLICE_X0Y101         FDCE                                         r  Inst_estado_caja/FSM_onehot_current_state_reg[2]/CE
+    SLICE_X1Y93          FDRE                         0.000     0.000 r  Inst_DECODER/CLK_aux.cont_reg[19]/C
+    SLICE_X1Y93          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/CLK_aux.cont_reg[19]/Q
+                         net (fo=2, routed)           0.120     0.261    Inst_DECODER/CLK_aux.cont_reg[19]
+    SLICE_X1Y93          CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     0.369 r  Inst_DECODER/CLK_aux.cont_reg[16]_i_1/O[3]
+                         net (fo=1, routed)           0.000     0.369    Inst_DECODER/CLK_aux.cont_reg[16]_i_1_n_4
+    SLICE_X1Y93          FDRE                                         r  Inst_DECODER/CLK_aux.cont_reg[19]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 SW_estado_caja
-                            (input port)
-  Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[0]/PRE
+  Source:                 Inst_DECODER/CLK_aux.cont_reg[23]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/CLK_aux.cont_reg[23]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.964ns  (logic 0.290ns (30.143%)  route 0.673ns (69.857%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Data Path Delay:        0.369ns  (logic 0.249ns (67.424%)  route 0.120ns (32.576%))
+  Logic Levels:           2  (CARRY4=1 FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    J15                                               0.000     0.000 r  SW_estado_caja (IN)
-                         net (fo=0)                   0.000     0.000    SW_estado_caja
-    J15                  IBUF (Prop_ibuf_I_O)         0.245     0.245 r  SW_estado_caja_IBUF_inst/O
-                         net (fo=3, routed)           0.489     0.734    Inst_estado_caja/SW_estado_caja_IBUF
-    SLICE_X0Y101         LUT1 (Prop_lut1_I0_O)        0.045     0.779 f  Inst_estado_caja/FSM_onehot_current_state[2]_i_1__0/O
-                         net (fo=3, routed)           0.184     0.964    Inst_estado_caja/FSM_onehot_current_state[2]_i_1__0_n_0
-    SLICE_X0Y101         FDPE                                         f  Inst_estado_caja/FSM_onehot_current_state_reg[0]/PRE
+    SLICE_X1Y94          FDRE                         0.000     0.000 r  Inst_DECODER/CLK_aux.cont_reg[23]/C
+    SLICE_X1Y94          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/CLK_aux.cont_reg[23]/Q
+                         net (fo=2, routed)           0.120     0.261    Inst_DECODER/CLK_aux.cont_reg[23]
+    SLICE_X1Y94          CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     0.369 r  Inst_DECODER/CLK_aux.cont_reg[20]_i_1/O[3]
+                         net (fo=1, routed)           0.000     0.369    Inst_DECODER/CLK_aux.cont_reg[20]_i_1_n_4
+    SLICE_X1Y94          FDRE                                         r  Inst_DECODER/CLK_aux.cont_reg[23]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/CLK_aux.cont_reg[27]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/CLK_aux.cont_reg[27]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.369ns  (logic 0.249ns (67.424%)  route 0.120ns (32.576%))
+  Logic Levels:           2  (CARRY4=1 FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y95          FDRE                         0.000     0.000 r  Inst_DECODER/CLK_aux.cont_reg[27]/C
+    SLICE_X1Y95          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/CLK_aux.cont_reg[27]/Q
+                         net (fo=2, routed)           0.120     0.261    Inst_DECODER/CLK_aux.cont_reg[27]
+    SLICE_X1Y95          CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     0.369 r  Inst_DECODER/CLK_aux.cont_reg[24]_i_1/O[3]
+                         net (fo=1, routed)           0.000     0.369    Inst_DECODER/CLK_aux.cont_reg[24]_i_1_n_4
+    SLICE_X1Y95          FDRE                                         r  Inst_DECODER/CLK_aux.cont_reg[27]/D
   -------------------------------------------------------------------    -------------------
 
 

@@ -40,7 +40,7 @@ end PSWRD_BOTON;
 architecture Behavioral of PSWRD_BOTON is
 
 begin
-
+CORRECTO<='1';
 
 --MANU HAZLO :)
 

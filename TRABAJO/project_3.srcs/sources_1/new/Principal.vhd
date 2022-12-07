@@ -35,7 +35,9 @@ entity Principal is
     Port ( SW_estado_caja : in STD_LOGIC;--para ir a abrir caja o cerrarla al instante
          boton: in std_logic;
           CLK : in std_logic;
-           LIGHT : out std_logic_vector(0 TO 3)
+           LIGHT : out std_logic_vector(0 TO 3);
+           segmentos: out STD_LOGIC_VECTOR (0 to 6);
+           ANODOS: out STD_LOGIC_VECTOR (0 to 7)-- escribira true o error
            );
 end Principal;
 
@@ -54,7 +56,7 @@ COMPONENT estado_caja is
      );
   end COMPONENT;
   
-  COMPONENT EDGE_DETECTOR is
+  COMPONENT edge_detector is
      port (
      CLK : in std_logic;
  IN_EDGE : in std_logic;
@@ -78,6 +80,15 @@ COMPONENT estado_caja is
      );
   end COMPONENT;
   
+  COMPONENT DECODER is
+  port (
+           PW : in STD_LOGIC;
+           CLK: in std_logic;
+           seg_disp : out STD_LOGIC_VECTOR (0 to 6);
+           AN: out STD_LOGIC_VECTOR (0 to 7)-- escribirÁ FAIL O GOOD
+     );
+  end COMPONENT;
+  
         begin
 
 Inst_estado_caja: estado_caja PORT MAP (
@@ -87,21 +98,29 @@ PW_RIGTH =>s_pswrd_correcta,
 LIGHT=>LIGHT(0 TO 3)
 );
 
-Inst_SINCRON: SINCRONIZADOR PORT MAP(
+Inst_syncron: SINCRONIZADOR PORT MAP (
 CLK => CLK,
-IN_SYNC=>BOTON,
-OUT_SYNC=>s_SYNC
+IN_SYNC =>boton,
+OUT_SYNC =>s_sync
 );
 
-Inst_EDGE_DETEC: EDGE_DETECTOR PORT  MAP(
+Inst_edge_det: edge_detector PORT MAP (
 CLK => CLK,
-IN_EDGE=>s_sync,
-OUT_EDGE=>s_pswrd
+IN_EDGE =>s_sync,
+OUT_EDGE =>s_pswrd
 );
+
 
 Inst_PSWRD_BOTON: PSWRD_BOTON PORT  MAP(
 CLK => CLK,
 IN_PSWRD=>s_pswrd,
 CORRECTO=>s_pswrd_correcta
+);
+
+Inst_DECODER: DECODER PORT  MAP(
+CLK => CLK,
+PW=>s_pswrd_correcta,
+seg_disp=>segmentos,
+AN=> ANODOS
 );
 end Behavioral;
