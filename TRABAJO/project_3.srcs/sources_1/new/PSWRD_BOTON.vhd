@@ -22,35 +22,21 @@ end PSWRD_BOTON;
 architecture Behavioral of PSWRD_BOTON is
 
 -- TODO ESTO ES PARA CONTAR LOS PULSOS EN UN SEGUNDO
-    constant max_count: INTEGER := 30; --frecuencia original del reloj interno.
+-- 100000000 esto equivale a 1 seg
+    constant max_count: INTEGER := 100000000*5; --cambia de estado cada 5 segundos
 	signal count: INTEGER range 0 to max_count + 10; 
 	signal clk_state: STD_LOGIC := '1';
 	SIGNAL cnt : UNSIGNED(4 DOWNTO 0):= "00000";
 	signal ok: std_logic := '0';
 
 -- A PARTIR DE AQUI MAQUINA DE ESTADOS DE LA CONTRASEÑA
-   --SIGNAL        count_pulsador : STD_LOGIC_vector(4 downto 0);
-    --SIGNAL numero: UNSIGNED(4 DOWNTO 0) := "00000";
     SIGNAL numero: std_logic_vector(4 DOWNTO 0) := "00000";
     type STATES is (Dig1, Dig2);
     signal current_state: STATES := Dig1;
     signal next_state: STATES;
 
---COMPONENT estados is
---     port (
---           CLK : in STD_LOGIC;
---           numero : in STD_LOGIC_vector(4 downto 0);
---           CORRECTO : out STD_LOGIC_vector(1 downto 0)
---     );
---end component;
 
 begin
-
---Inst_estados: estados PORT MAP(
---    CLK => CLK,
---    numero => count_pulsador,
---    CORRECTO =>CORRECTO
---);
 
 --CONTADOR
 
@@ -72,11 +58,7 @@ begin
                     count <= 0; 
                     cnt <= (others => '0'); 
                     count_pulsador <= std_logic_vector(cnt); 
-                    NUMERO <= std_logic_vector(cnt);
-                    --NUMERO <= cnt; 
-                     --if  numero = "00000" then
-                        --PERFECT <= "10";
-                     --end if;                
+                    NUMERO <= std_logic_vector(cnt);     
 
                 end if;
             end if;
@@ -96,7 +78,7 @@ begin
     end if;
  end process;
  
-   nextstate_decod: process (current_state)
+   nextstate_decod: process (current_state, numero)
  begin
      next_state <= current_state;
      case current_state is
@@ -104,10 +86,12 @@ begin
             if  numero = "00101" then --5
                 next_state <= Dig2;
                 CORRECTO <= "01";
+                si <= '1';  
             end if;
           when Dig2 =>
             if  numero = "00110" then --6
                 next_state <= Dig1;
+                si <= '1';
                 CORRECTO <= "11";
             end if;  
      end case;
