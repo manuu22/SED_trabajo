@@ -38,6 +38,7 @@ entity Principal is
            LIGHT : out std_logic_vector(0 TO 3);
            segmentos: out STD_LOGIC_VECTOR (0 to 6);
            ANODOS: out STD_LOGIC_VECTOR (0 to 7)-- escribira true o error
+           
            );
 end Principal;
 
@@ -46,6 +47,7 @@ architecture Behavioral of Principal is
     signal s_pswrd_correcta: std_logic;
     signal s_sync: std_logic;
     signal s_pswrd: std_logic;
+    SIGNAL LEDS: std_logic_vector(1 DOWNTO 0);-- ESTO ES LA SALIDA DE LOS DIFERENTES DIGITOS DE LA CONTRA (NO FUNCIONA TODAVIA)
 
 COMPONENT estado_caja is
      port (
@@ -74,9 +76,13 @@ COMPONENT estado_caja is
   
   COMPONENT PSWRD_BOTON is
   port (
-     CLK : in std_logic;
- IN_PSWRD : in std_logic;
- CORRECTO : out std_logic
+	CLK: 	        in STD_LOGIC;
+	IN_PSWRD :      in STD_LOGIC;
+	
+    clk_pswrd:		out STD_LOGIC;
+    CORRECTO:       out std_logic_vector(1 DOWNTO 0);
+    SI:             OUT STD_LOGIC;
+    count_pulsador:  out std_logic_vector(4 DOWNTO 0)
      );
   end COMPONENT;
   
@@ -114,7 +120,8 @@ OUT_EDGE =>s_pswrd
 Inst_PSWRD_BOTON: PSWRD_BOTON PORT  MAP(
 CLK => CLK,
 IN_PSWRD=>s_pswrd,
-CORRECTO=>s_pswrd_correcta
+SI=>s_pswrd_correcta,
+CORRECTO =>LEDS -- ESTO SERAN LAS LUCES QUE SE ENCIENDEN SI ESTA BIEN CADA DIGITO DE LA CONTRASEÑA
 );
 
 Inst_DECODER: DECODER PORT  MAP(
