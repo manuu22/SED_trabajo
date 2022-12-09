@@ -12,9 +12,13 @@ port (
 	IN_PSWRD :      in STD_LOGIC;
 	reset:          in std_logic;
 	
-    clk_pswrd:		out STD_LOGIC;--es la que hay que sacar(cada flanco es 1 seg)
+    clk_pswrd:		out STD_LOGIC;
     CORRECTO:       out std_logic_vector(1 DOWNTO 0);
     SI:             OUT STD_LOGIC;
+    
+    tiempo:         out std_logic_vector(1 DOWNTO 0);--salida para poner cuanto tiempo queda
+    cantidad:       out std_logic_vector(4 DOWNTO 0);--salida de cantidad de veces se ha pulsado
+    
     count_pulsador: out std_logic_vector(4 DOWNTO 0)
     
 );
@@ -29,6 +33,10 @@ architecture Behavioral of PSWRD_BOTON is
 	signal clk_state: STD_LOGIC := '1';
 	SIGNAL cnt : UNSIGNED(4 DOWNTO 0):= "00000";
 	signal ok: std_logic := '0';
+	
+-- SEÑALES PARA LA SALIDA PARA LA INFORMACION DEL TIEMPO Y CANTIDAD
+	signal tempo: unsigned(1 DOWNTO 0) := "000";
+	signal segundos: integer := 1;
 
 -- A PARTIR DE AQUI MAQUINA DE ESTADOS DE LA CONTRASEÑA
     SIGNAL numero: std_logic_vector(4 DOWNTO 0) := "00000";
@@ -48,10 +56,16 @@ begin
               if count < max_count then 
                   count <= count+1; 
                   if  OK = '0' AND IN_PSWRD = '1'  then 
-                      cnt <= cnt + 1;  
-                      OK <=  '1';
+                      cnt  <= cnt + 1;  --contar cada pulsacion
+                      OK   <=  '1';
                   elsif IN_PSWRD = '0'  then 
                     OK <=  '0';
+                  end if;
+                  
+                  if count >= (100000000*segundos) then 
+                  segundos <= segundos +1;
+                  tempo <= tempo + 1;
+                  
                   end if;
                     
                 else
@@ -66,15 +80,19 @@ begin
             clk_pswrd <= clk_state;
             --NUMERO <= "00100";
         end process;
+        tiempo   <= std_logic_vector(tempo);
+        cantidad <= std_logic_vector(cnt);
         --count_pulsador <= std_logic_vector(cnt); -- esto hace que se actualice cada intante pero para la maquina de estados solo quiero que se actualice cuando se pone a 0 el contador
  
  --maquina de estados
  
  state_register: process (CLK)
  begin
-    --if start = '0' then
-    --    current_state<= Dig1;
-    
+ -- con esto se puede cambiar para los resets
+--    if(reset='0') then
+--      current_state <= Dig0; 
+--    end if;
+ 
     if rising_edge(clk) then
         current_state<= next_state; 
         end if;
