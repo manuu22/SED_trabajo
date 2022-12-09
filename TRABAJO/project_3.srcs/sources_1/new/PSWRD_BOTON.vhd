@@ -88,10 +88,13 @@ begin
             if  numero = "00101" then --5
                 next_state <= Dig1;
             end if;
-          when Dig1 =>--p0ner reset
-            if  numero = "00110" then --6
+          when Dig1 =>
+            if(reset='0') then
+                next_state <= Dig0; 
+            else if  numero = "00110" then --6
                 next_state <= Dig2;          
-            end if; 
+             end if; 
+             end if;
           when Dig2 =>
             if(reset='0') then
                 next_state <= Dig0; 
