@@ -1,80 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1670416247">
+<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1670585729">
   <File Type="ROUTE-PWR" Name="Principal_power_routed.rpt"/>
   <File Type="PA-TCL" Name="Principal.tcl"/>
-  <File Type="BITSTR-MMI" Name="Principal.mmi"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="Principal_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="Principal_timing_summary_init.rpt"/>
   <File Type="ROUTE-PWR-SUM" Name="Principal_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="Principal_reports.tcl"/>
-  <File Type="OPT-TIMING" Name="Principal_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="Principal_opt.dcp"/>
+  <File Type="BITSTR-MSK" Name="Principal.msk"/>
+  <File Type="ROUTE-CLK" Name="Principal_clock_utilization_routed.rpt"/>
+  <File Type="RDI-RDI" Name="Principal.vdi"/>
+  <File Type="BG-BIT" Name="Principal.bit"/>
+  <File Type="BG-DRC" Name="Principal.drc"/>
+  <File Type="BG-BGN" Name="Principal.bgn"/>
+  <File Type="BG-BIN" Name="Principal.bin"/>
+  <File Type="BITSTR-RBT" Name="Principal.rbt"/>
+  <File Type="BITSTR-NKY" Name="Principal.nky"/>
+  <File Type="BITSTR-BMM" Name="Principal_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="Principal.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="Principal_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-SYSDEF" Name="Principal.sysdef"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="Principal.ltx"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="OPT-DRC" Name="Principal_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="Principal.hwdef"/>
-  <File Type="PWROPT-DCP" Name="Principal_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="Principal_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="Principal_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="Principal_placed.dcp"/>
   <File Type="PLACE-IO" Name="Principal_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="Principal_clock_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="Principal_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL-PB" Name="Principal_utilization_placed.pb"/>
   <File Type="PLACE-CTRL" Name="Principal_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="Principal_incremental_reuse_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="Principal_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BIN" Name="Principal.bin"/>
-  <File Type="PLACE-TIMING" Name="Principal_timing_summary_placed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="Principal_postplace_pwropt.dcp"/>
-  <File Type="BITSTR-MSK" Name="Principal.msk"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="Principal_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="Principal_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="Principal_drc_physopted.rpt"/>
-  <File Type="BITSTR-RBT" Name="Principal.rbt"/>
-  <File Type="PHYSOPT-TIMING" Name="Principal_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="Principal_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="Principal_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="Principal_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="Principal_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="Principal_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="Principal_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="Principal_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Principal_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Principal_methodology_drc_routed.pb"/>
   <File Type="ROUTE-PWR-RPX" Name="Principal_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="Principal_route_status.rpt"/>
   <File Type="ROUTE-STATUS-PB" Name="Principal_route_status.pb"/>
+  <File Type="ROUTE-DCP" Name="Principal_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="Principal_routed_error.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="Principal_routed_bb.dcp"/>
   <File Type="ROUTE-TIMINGSUMMARY" Name="Principal_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="Principal_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="Principal_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="Principal_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="Principal_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="Principal_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="Principal_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="Principal_bus_skew_routed.rpx"/>
+  <File Type="OPT-DCP" Name="Principal_opt.dcp"/>
+  <File Type="PLACE-DCP" Name="Principal_placed.dcp"/>
+  <File Type="PWROPT-DCP" Name="Principal_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="Principal_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="Principal_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="Principal_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Principal_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Principal_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Principal_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Principal_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Principal_bus_skew_postroute_physopted.rpt"/>
-  <File Type="BG-BIT" Name="Principal.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Principal_bus_skew_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Principal_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-NKY" Name="Principal.nky"/>
-  <File Type="BITSTR-BMM" Name="Principal_bd.bmm"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Principal_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="Principal_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Principal_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="Principal.pdi"/>
   <File Type="RCFI_FILE" Name="Principal.rcfi"/>
   <File Type="CFI_FILE" Name="Principal.cfi"/>
   <File Type="RNPI_FILE" Name="Principal.rnpi"/>
   <File Type="NPI_FILE" Name="Principal.npi"/>
   <File Type="RBD_FILE" Name="Principal.rbd"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="Principal.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="Principal.sysdef"/>
-  <File Type="BG-BGN" Name="Principal.bgn"/>
-  <File Type="BG-DRC" Name="Principal.drc"/>
-  <File Type="RDI-RDI" Name="Principal.vdi"/>
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="ROUTE-RQS" Name="Principal_routed.rqs"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="Principal_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
@@ -167,5 +149,6 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
+    <Step Id="write_device_image"/>
   </Strategy>
 </GenRun>

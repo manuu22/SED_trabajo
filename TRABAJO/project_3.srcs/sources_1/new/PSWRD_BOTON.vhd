@@ -10,8 +10,9 @@ entity PSWRD_BOTON is
 port (
 	CLK: 	        in STD_LOGIC;
 	IN_PSWRD :      in STD_LOGIC;
+	reset:          in std_logic;
 	
-    clk_pswrd:		out STD_LOGIC;
+    clk_pswrd:		out STD_LOGIC;--es la que hay que sacar(cada flanco es 1 seg)
     CORRECTO:       out std_logic_vector(1 DOWNTO 0);
     SI:             OUT STD_LOGIC;
     count_pulsador: out std_logic_vector(4 DOWNTO 0)
@@ -31,8 +32,8 @@ architecture Behavioral of PSWRD_BOTON is
 
 -- A PARTIR DE AQUI MAQUINA DE ESTADOS DE LA CONTRASEÑA
     SIGNAL numero: std_logic_vector(4 DOWNTO 0) := "00000";
-    type STATES is (Dig1, Dig2);
-    signal current_state: STATES := Dig1;
+    type STATES is (Dig0,Dig1,Dig2);
+    signal current_state: STATES := Dig0;
     signal next_state: STATES;
 
 
@@ -73,28 +74,48 @@ begin
  begin
     --if start = '0' then
     --    current_state<= Dig1;
+    
     if rising_edge(clk) then
         current_state<= next_state; 
-    end if;
+        end if;
  end process;
  
    nextstate_decod: process (current_state, numero)
  begin
      next_state <= current_state;
      case current_state is
-         when Dig1 =>
+         when Dig0 =>
             if  numero = "00101" then --5
-                next_state <= Dig2;
-                CORRECTO <= "01";
-                si <= '1';  
-            end if;
-          when Dig2 =>
-            if  numero = "00110" then --6
                 next_state <= Dig1;
-                si <= '1';
-                CORRECTO <= "11";
-            end if;  
+            end if;
+          when Dig1 =>--p0ner reset
+            if  numero = "00110" then --6
+                next_state <= Dig2;          
+            end if; 
+          when Dig2 =>
+            if(reset='0') then
+                next_state <= Dig0; 
+            end if;    
      end case;
+ end process;
+ 
+ output_decod_luz: process (current_state)
+ begin
+
+ case current_state is
+    when Dig0  =>
+         si <= '0';
+         CORRECTO <= "00";
+     when Dig1  =>
+         si <= '0';
+         CORRECTO <= "01";     
+      when Dig2  =>
+         si <= '1';
+         CORRECTO <= "11";
+     when others => 
+         si <= '0';
+         CORRECTO <= "00";
+end case;
  end process;
  
 end Behavioral;

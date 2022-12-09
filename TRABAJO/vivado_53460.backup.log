@@ -2,16 +2,24 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Sat Dec  3 11:46:28 2022
-# Process ID: 16248
-# Current directory: C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5576 C:\Users\Jaime Bustos Valera\Desktop\VIVADO\project_3\project_3.xpr
-# Log file: C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/vivado.log
-# Journal file: C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3\vivado.jou
+# Start of session at: Thu Dec  8 19:30:29 2022
+# Process ID: 53460
+# Current directory: C:/Users/Jaime Bustos Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent52944 C:\Users\Jaime Bustos Valera\Desktop\VIVADO\GitHub\SED_trabajo\TRABAJO\project_3.xpr
+# Log file: C:/Users/Jaime Bustos Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/vivado.log
+# Journal file: C:/Users/Jaime Bustos Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO\vivado.jou
 # Running On: DESKTOP-M41NEHO, OS: Windows, CPU Frequency: 2496 MHz, CPU Physical cores: 4, Host memory: 8459 MB
 #-----------------------------------------------------------
 start_gui
-open_project {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.xpr}
+open_project {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/project_3.xpr}
+WARNING: [Board 49-91] Board repository path 'Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/Bustos' does not exist, it will not be used to search board files.
+WARNING: [Board 49-91] Board repository path 'Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/Bustos' does not exist, it will not be used to search board files.
+WARNING: [Board 49-91] Board repository path 'Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/Valera/Desktop/VIVADO/project_1/Bustos' does not exist, it will not be used to search board files.
+WARNING: [Board 49-91] Board repository path 'Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/Valera/Desktop/VIVADO/project_1/Bustos' does not exist, it will not be used to search board files.
+WARNING: [Board 49-91] Board repository path 'Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/Valera/Desktop/VIVADO/project_1/Valera/Desktop/VIVADO/project_3/Bustos' does not exist, it will not be used to search board files.
+WARNING: [Board 49-91] Board repository path 'Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/Valera/Desktop/VIVADO/project_1/Valera/Desktop/VIVADO/project_3/Bustos' does not exist, it will not be used to search board files.
+WARNING: [Board 49-91] Board repository path 'Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/Valera/Desktop/VIVADO/project_1/Valera/Desktop/VIVADO/project_3/Valera/AppData/Roaming/Xilinx/Vivado/2022.2/xhub/board_store/xilinx_board_store' does not exist, it will not be used to search board files.
+WARNING: [Board 49-91] Board repository path 'Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/Valera/Desktop/VIVADO/project_1/Valera/Desktop/VIVADO/project_3/Valera/AppData/Roaming/Xilinx/Vivado/2022.2/xhub/board_store/xilinx_board_store' does not exist, it will not be used to search board files.
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at D:/VIVADO-XILINX/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.6/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at D:/VIVADO-XILINX/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at D:/VIVADO-XILINX/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
@@ -64,24 +72,20 @@ WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 availab
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at D:/VIVADO-XILINX/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at D:/VIVADO-XILINX/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at D:/VIVADO-XILINX/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
-INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.gen/sources_1'.
+INFO: [Project 1-313] Project file moved from 'C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3' since last save.
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/Jaime Bustos Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/project_3.gen/sources_1'.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/VIVADO-XILINX/Vivado/2022.2/data/ip'.
-open_project: Time (s): cpu = 00:00:30 ; elapsed = 00:00:27 . Memory (MB): peak = 1111.191 ; gain = 351.914
+open_project: Time (s): cpu = 00:00:28 ; elapsed = 00:00:14 . Memory (MB): peak = 1099.020 ; gain = 321.348
 update_compile_order -fileset sources_1
-file mkdir C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sim_1/new
-file mkdir C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sim_1/new
-file mkdir C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sim_1/new
-file mkdir C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sim_1/new
-file mkdir C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sim_1/new
-set_property SOURCE_SET sources_1 [get_filesets sim_1]
-file mkdir C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sim_1/new
-file mkdir {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sim_1/new}
-close [ open {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sim_1/new/top_tb.vhd} w ]
-add_files -fileset sim_1 {{C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sim_1/new/top_tb.vhd}}
-update_compile_order -fileset sim_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Thu Dec  8 20:00:25 2022] Launched synth_1...
+Run output will be captured here: C:/Users/Jaime Bustos Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/project_3.runs/synth_1/runme.log
+[Thu Dec  8 20:00:26 2022] Launched impl_1...
+Run output will be captured here: C:/Users/Jaime Bustos Valera/Desktop/VIVADO/GitHub/SED_trabajo/TRABAJO/project_3.runs/impl_1/runme.log
 exit
-INFO: [Common 17-206] Exiting Vivado at Sat Dec  3 12:27:28 2022...
+INFO: [Common 17-206] Exiting Vivado at Thu Dec  8 20:11:21 2022...

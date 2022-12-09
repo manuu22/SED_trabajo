@@ -79,6 +79,7 @@ COMPONENT estado_caja is
   port (
 	CLK: 	         in STD_LOGIC;
 	IN_PSWRD :       in STD_LOGIC;
+	reset:          in std_logic;
 	
     clk_pswrd:		 out STD_LOGIC;
     CORRECTO:        out std_logic_vector(1 DOWNTO 0);
@@ -122,7 +123,8 @@ Inst_PSWRD_BOTON: PSWRD_BOTON PORT  MAP(
     CLK => CLK,
     IN_PSWRD=>s_pswrd,
     SI=>s_pswrd_correcta,
-    CORRECTO =>LEDS -- ESTO SERAN LAS LUCES QUE SE ENCIENDEN SI ESTA BIEN CADA DIGITO DE LA CONTRASEÑA
+    reset=>SW_estado_caja,
+    CORRECTO =>LEDS(1 DOWNTO 0) -- ESTO SERAN LAS LUCES QUE SE ENCIENDEN SI ESTA BIEN CADA DIGITO DE LA CONTRASEÑA
 );
 
 Inst_DECODER: DECODER PORT  MAP(

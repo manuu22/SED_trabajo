@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1670416247">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1670585729">
   <File Type="PA-TCL" Name="Principal.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="Principal_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="Principal_reports.tcl"/>
   <File Type="RDS-RDS" Name="Principal.vds"/>
   <File Type="RDS-UTIL" Name="Principal_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="Principal_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="Principal.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="Principal_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="Principal_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/PSWRD_BOTON.vhd">
