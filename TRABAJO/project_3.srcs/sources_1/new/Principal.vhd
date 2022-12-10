@@ -49,6 +49,8 @@ architecture Behavioral of Principal is
     signal s_pswrd_correcta: std_logic;
     signal s_sync:           std_logic;
     signal s_pswrd:          std_logic;
+    signal s_tiempo: std_logic_vector(0 to 1);
+    signal s_cantidad: std_logic_vector(0 to 4);
    
 COMPONENT estado_caja is
      port (
@@ -80,7 +82,8 @@ COMPONENT estado_caja is
 	CLK: 	         in STD_LOGIC;
 	IN_PSWRD :       in STD_LOGIC;
 	reset:          in std_logic;
-	
+	tiempo:         out std_logic_vector(1 DOWNTO 0);--salida para poner cuanto tiempo queda
+    cantidad:       out std_logic_vector(4 DOWNTO 0);
     clk_pswrd:		 out STD_LOGIC;
     CORRECTO:        out std_logic_vector(1 DOWNTO 0);
     SI:              out STD_LOGIC;
@@ -91,6 +94,8 @@ COMPONENT estado_caja is
   COMPONENT DECODER is
   port (
            PW :       in STD_LOGIC;
+           Tiempo_dec:in STD_LOGIC_vector(0 to 2);
+           cantidad: in STD_LOGIC_vector(0 to 3);
            CLK:       in std_logic;
            seg_disp : out STD_LOGIC_VECTOR (0 to 6);
            AN:        out STD_LOGIC_VECTOR (0 to 7)-- escribirÁ FAIL O GOOD
@@ -123,6 +128,8 @@ Inst_PSWRD_BOTON: PSWRD_BOTON PORT  MAP(
     CLK => CLK,
     IN_PSWRD=>s_pswrd,
     SI=>s_pswrd_correcta,
+    tiempo=>s_tiempo ,
+    cantidad=>s_cantidad ,
     reset=>SW_estado_caja,
     CORRECTO =>LEDS(1 DOWNTO 0) -- ESTO SERAN LAS LUCES QUE SE ENCIENDEN SI ESTA BIEN CADA DIGITO DE LA CONTRASEÑA
 );
@@ -130,6 +137,8 @@ Inst_PSWRD_BOTON: PSWRD_BOTON PORT  MAP(
 Inst_DECODER: DECODER PORT  MAP(
     CLK => CLK,
     PW=>s_pswrd_correcta,
+    tiempo_dec=>s_tiempo,
+    cantidad=>s_cantidad,
     seg_disp=>segmentos,
     AN=> ANODOS
 );
