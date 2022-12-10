@@ -13,8 +13,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity edge_detector is
 --  Port ( );
 port ( 
- CLK : in std_logic;
- IN_EDGE : in std_logic;
+ CLK :      in std_logic;
+ IN_EDGE :  in std_logic;
  OUT_EDGE : out std_logic
  );
 end edge_detector;

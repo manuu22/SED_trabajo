@@ -13,10 +13,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity estado_caja is
 --  Port ( );
 port (
- CLK : in std_logic;
- SW_caja: in std_logic;
- PW_RIGTH: in std_logic;
- LIGHT : out std_logic_vector(0 TO 3)
+ CLK :      in std_logic;
+ SW_caja:   in std_logic;
+ PW_RIGTH:  in std_logic;
+ 
+ LIGHT :    out std_logic_vector(0 TO 3)
 
  );
 end estado_caja;

@@ -12,14 +12,11 @@ port (
 	IN_PSWRD :      in STD_LOGIC;
 	reset:          in std_logic;
 	
-    clk_pswrd:		out STD_LOGIC;
     CORRECTO:       out std_logic_vector(1 DOWNTO 0);
     SI:             OUT STD_LOGIC;
     
-    tiempo:         out std_logic_vector(1 DOWNTO 0);--salida para poner cuanto tiempo queda
-    cantidad:       out std_logic_vector(4 DOWNTO 0);--salida de cantidad de veces se ha pulsado
-    
-    count_pulsador: out std_logic_vector(4 DOWNTO 0)
+    tiempo:         out std_logic_vector(0 to 2);--salida para poner cuanto tiempo queda
+    cantidad:       out std_logic_vector(0 to 3)--salida de cantidad de veces se ha pulsado
     
 );
 end PSWRD_BOTON;
@@ -31,11 +28,11 @@ architecture Behavioral of PSWRD_BOTON is
     constant max_count: INTEGER := 100000000*5; --cambia de estado cada 5 segundos
 	signal count: INTEGER range 0 to max_count + 10; 
 	signal clk_state: STD_LOGIC := '1';
-	SIGNAL cnt : UNSIGNED(4 DOWNTO 0):= "00000";
+	SIGNAL cnt : UNSIGNED(0 to 3):= "0000";
 	signal ok: std_logic := '0';
 	
 -- SEÑALES PARA LA SALIDA PARA LA INFORMACION DEL TIEMPO Y CANTIDAD
-	signal tempo: unsigned(1 DOWNTO 0) := "000";
+	signal tempo: unsigned(0 to 2) := "000";
 	signal segundos: integer := 1;
 
 -- A PARTIR DE AQUI MAQUINA DE ESTADOS DE LA CONTRASEÑA
@@ -72,19 +69,19 @@ begin
                     clk_state <= not clk_state;
                     count <= 0; 
                     cnt <= (others => '0'); 
-                    count_pulsador <= std_logic_vector(cnt); 
+                    --count_pulsador <= std_logic_vector(cnt); 
                     NUMERO <= std_logic_vector(cnt);     
 
                 end if;
             end if;
-            clk_pswrd <= clk_state;
+            --clk_pswrd <= clk_state;
             --NUMERO <= "00100";
         end process;
         tiempo   <= std_logic_vector(tempo);
         cantidad <= std_logic_vector(cnt);
         --count_pulsador <= std_logic_vector(cnt); -- esto hace que se actualice cada intante pero para la maquina de estados solo quiero que se actualice cuando se pone a 0 el contador
  
- --maquina de estados
+ --MAQUINA DE ESTADOS
  
  state_register: process (CLK)
  begin

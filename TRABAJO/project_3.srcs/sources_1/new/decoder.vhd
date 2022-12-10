@@ -18,12 +18,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity decoder is
-    Port ( PW : in STD_LOGIC;
-           Tiempo_dec : in STD_LOGIC_VECTOR (0 to 2);
-           Cantidad:in STD_LOGIC_VECTOR (0 to 3);
-           CLK: in std_logic;
-           seg_disp : out STD_LOGIC_VECTOR (0 to 6);
-           AN: out STD_LOGIC_VECTOR (0 to 7)-- escribira true o error
+    Port ( PW :          in STD_LOGIC;
+           Tiempo_dec :  in STD_LOGIC_VECTOR (0 to 2);
+           Cantidad:     in STD_LOGIC_VECTOR (0 to 3);
+           CLK:          in std_logic;
+           
+           seg_disp :    out STD_LOGIC_VECTOR (0 to 6);
+           AN:           out STD_LOGIC_VECTOR (0 to 7)-- escribira true o error
            );
 end decoder;
 

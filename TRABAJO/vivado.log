@@ -2,16 +2,16 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri Dec  9 19:22:58 2022
-# Process ID: 53012
-# Current directory: C:/Users/Usuario/Documents/SED/TRABAJO 3/SED_trabajo/TRABAJO
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent55060 C:\Users\Usuario\Documents\SED\TRABAJO 3\SED_trabajo\TRABAJO\project_3.xpr
-# Log file: C:/Users/Usuario/Documents/SED/TRABAJO 3/SED_trabajo/TRABAJO/vivado.log
-# Journal file: C:/Users/Usuario/Documents/SED/TRABAJO 3/SED_trabajo/TRABAJO\vivado.jou
+# Start of session at: Sat Dec 10 10:57:18 2022
+# Process ID: 54752
+# Current directory: C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent43940 C:\Users\Usuario\Documents\Informatica Industrial\SED_trabajo\TRABAJO\project_3.xpr
+# Log file: C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/vivado.log
+# Journal file: C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO\vivado.jou
 # Running On: MSI, OS: Windows, CPU Frequency: 1608 MHz, CPU Physical cores: 6, Host memory: 17009 MB
 #-----------------------------------------------------------
 start_gui
-open_project {C:/Users/Usuario/Documents/SED/TRABAJO 3/SED_trabajo/TRABAJO/project_3.xpr}
+open_project {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.xpr}
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.6/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
@@ -65,13 +65,13 @@ WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 avail
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
 INFO: [Project 1-313] Project file moved from 'C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3' since last save.
-INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/Usuario/Documents/SED/TRABAJO 3/SED_trabajo/TRABAJO/project_3.gen/sources_1'.
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.gen/sources_1'.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
-open_project: Time (s): cpu = 00:00:23 ; elapsed = 00:00:10 . Memory (MB): peak = 1116.223 ; gain = 314.973
+open_project: Time (s): cpu = 00:00:21 ; elapsed = 00:00:09 . Memory (MB): peak = 1123.641 ; gain = 317.887
 update_compile_order -fileset sources_1
 exit
-INFO: [Common 17-206] Exiting Vivado at Fri Dec  9 20:11:52 2022...
+INFO: [Common 17-206] Exiting Vivado at Sat Dec 10 11:17:46 2022...

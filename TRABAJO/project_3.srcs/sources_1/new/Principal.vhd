@@ -36,7 +36,7 @@ entity Principal is
             boton:           in std_logic;
             CLK :            in std_logic;
             
-            LIGHT :          out std_logic_vector(0 TO 3);
+            LIGHT :          out std_logic_vector(0 to 3);
             segmentos:       out STD_LOGIC_VECTOR (0 to 6);
             ANODOS:          out STD_LOGIC_VECTOR (0 to 7);-- escribira true o error
             LEDS:            out std_logic_vector(1 DOWNTO 0)
@@ -49,31 +49,31 @@ architecture Behavioral of Principal is
     signal s_pswrd_correcta: std_logic;
     signal s_sync:           std_logic;
     signal s_pswrd:          std_logic;
-    signal s_tiempo: std_logic_vector(0 to 1);
-    signal s_cantidad: std_logic_vector(0 to 4);
+    signal s_tiempo:         std_logic_vector(0 to 2);
+    signal s_cantidad:       std_logic_vector(0 to 3);
    
 COMPONENT estado_caja is
      port (
-      CLK :     in std_logic;
-      SW_caja:  in std_logic;
-      PW_RIGTH: in std_logic;
-      LIGHT :   out std_logic_vector(0 TO 3)
+      CLK :       in std_logic;
+      SW_caja:    in std_logic;
+      PW_RIGTH:   in std_logic;
+      LIGHT :     out std_logic_vector(0 TO 3)
      );
   end COMPONENT;
   
   COMPONENT edge_detector is
      port (
-      CLK :      in std_logic;
-      IN_EDGE :  in std_logic;
-      OUT_EDGE : out std_logic
+      CLK :       in std_logic;
+      IN_EDGE :   in std_logic;
+      OUT_EDGE :  out std_logic
      );
   end COMPONENT;
   
   COMPONENT SINCRONIZADOR is
      port (
-      CLK :      in std_logic;
-      IN_SYNC :  in std_logic;
-      OUT_SYNC : out std_logic
+      CLK :       in std_logic;
+      IN_SYNC :   in std_logic;
+      OUT_SYNC :  out std_logic
      );
   end COMPONENT;
   
@@ -81,24 +81,24 @@ COMPONENT estado_caja is
   port (
 	CLK: 	         in STD_LOGIC;
 	IN_PSWRD :       in STD_LOGIC;
-	reset:          in std_logic;
-	tiempo:         out std_logic_vector(1 DOWNTO 0);--salida para poner cuanto tiempo queda
-    cantidad:       out std_logic_vector(4 DOWNTO 0);
-    clk_pswrd:		 out STD_LOGIC;
+	reset:           in std_logic;
+	
+	tiempo:          out std_logic_vector(0 to 2);--salida para poner cuanto tiempo queda
+    cantidad:        out std_logic_vector(0 to 3);
+    
     CORRECTO:        out std_logic_vector(1 DOWNTO 0);
-    SI:              out STD_LOGIC;
-    count_pulsador:  out std_logic_vector(4 DOWNTO 0)
+    SI:              out STD_LOGIC
      );
   end COMPONENT;
   
   COMPONENT DECODER is
   port (
-           PW :       in STD_LOGIC;
-           Tiempo_dec:in STD_LOGIC_vector(0 to 2);
-           cantidad: in STD_LOGIC_vector(0 to 3);
-           CLK:       in std_logic;
-           seg_disp : out STD_LOGIC_VECTOR (0 to 6);
-           AN:        out STD_LOGIC_VECTOR (0 to 7)-- escribirÁ FAIL O GOOD
+           PW :          in STD_LOGIC;
+           Tiempo_dec:   in STD_LOGIC_vector(0 to 2);
+           cantidad:     in STD_LOGIC_vector(0 to 3);
+           CLK:          in std_logic;
+           seg_disp :    out STD_LOGIC_VECTOR (0 to 6);
+           AN:           out STD_LOGIC_VECTOR (0 to 7)-- escribirÁ FAIL O GOOD
      );
   end COMPONENT;
   
@@ -128,8 +128,8 @@ Inst_PSWRD_BOTON: PSWRD_BOTON PORT  MAP(
     CLK => CLK,
     IN_PSWRD=>s_pswrd,
     SI=>s_pswrd_correcta,
-    tiempo=>s_tiempo ,
-    cantidad=>s_cantidad ,
+    tiempo=>s_tiempo,
+    cantidad=>s_cantidad,
     reset=>SW_estado_caja,
     CORRECTO =>LEDS(1 DOWNTO 0) -- ESTO SERAN LAS LUCES QUE SE ENCIENDEN SI ESTA BIEN CADA DIGITO DE LA CONTRASEÑA
 );

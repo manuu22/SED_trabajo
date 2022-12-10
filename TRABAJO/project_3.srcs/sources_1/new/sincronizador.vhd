@@ -35,8 +35,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity sincronizador is
 
  port ( 
- CLK : in std_logic;
- IN_SYNC : in std_logic;
+ CLK :      in std_logic;
+ IN_SYNC :  in std_logic;
+ 
  OUT_SYNC : out std_logic
  );
 end sincronizador;
