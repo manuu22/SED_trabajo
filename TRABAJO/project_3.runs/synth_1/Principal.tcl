@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.runs/synth_1/Principal.tcl"
+  variable script "C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.runs/synth_1/Principal.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,28 +70,28 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 1
+set_param chipscope.maxJobs 3
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.cache/wt} [current_project]
-set_property parent.project_path {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.xpr} [current_project]
+set_property webtalk.parent_dir {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.cache/wt} [current_project]
+set_property parent.project_path {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.xpr} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo {c:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.cache/ip} [current_project]
+set_property ip_output_repo {c:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sources_1/new/PSWRD_BOTON.vhd}
-  {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sources_1/new/decoder.vhd}
-  {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sources_1/new/edge_detector.vhd}
-  {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sources_1/new/estado_caja.vhd}
-  {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sources_1/new/sincronizador.vhd}
-  {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/sources_1/new/Principal.vhd}
+  {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.srcs/sources_1/new/PSWRD_BOTON.vhd}
+  {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.srcs/sources_1/new/decoder.vhd}
+  {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.srcs/sources_1/new/edge_detector.vhd}
+  {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.srcs/sources_1/new/estado_caja.vhd}
+  {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.srcs/sources_1/new/sincronizador.vhd}
+  {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.srcs/sources_1/new/Principal.vhd}
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -102,8 +102,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/constrs_1/imports/practicas/Nexys4DDR_Master.xdc}}
-set_property used_in_implementation false [get_files {{C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/constrs_1/imports/practicas/Nexys4DDR_Master.xdc}}]
+read_xdc {{C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.srcs/constrs_1/imports/practicas/Nexys4DDR_Master.xdc}}
+set_property used_in_implementation false [get_files {{C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.srcs/constrs_1/imports/practicas/Nexys4DDR_Master.xdc}}]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

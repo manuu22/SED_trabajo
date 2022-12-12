@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.runs/impl_1/Principal.tcl"
+  variable script "C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.runs/impl_1/Principal.tcl"
   variable category "vivado_impl"
 }
 
@@ -122,22 +122,22 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 1
+  set_param chipscope.maxJobs 3
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a100tcsg324-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.cache/wt} [current_project]
-  set_property parent.project_path {C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.xpr} [current_project]
-  set_property ip_output_repo {{C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.cache/ip}} [current_project]
+  set_property webtalk.parent_dir {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.cache/wt} [current_project]
+  set_property parent.project_path {C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.xpr} [current_project]
+  set_property ip_output_repo {{C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.cache/ip}} [current_project]
   set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet {{C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.runs/synth_1/Principal.dcp}}
+  add_files -quiet {{C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.runs/synth_1/Principal.dcp}}
 OPTRACE "read constraints: implementation" START { }
-  read_xdc {{C:/Users/Jaime Bustos Valera/Desktop/VIVADO/project_3/project_3.srcs/constrs_1/imports/practicas/Nexys4DDR_Master.xdc}}
+  read_xdc {{C:/Users/Usuario/Documents/Informatica Industrial/SED_trabajo/TRABAJO/project_3.srcs/constrs_1/imports/practicas/Nexys4DDR_Master.xdc}}
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

@@ -98,7 +98,7 @@ COMPONENT estado_caja is
            cantidad:     in STD_LOGIC_vector(0 to 3);
            CLK:          in std_logic;
            seg_disp :    out STD_LOGIC_VECTOR (0 to 6);
-           AN:           out STD_LOGIC_VECTOR (0 to 7)-- escribir¡ FAIL O GOOD
+           AN:           out STD_LOGIC_VECTOR (0 to 7)-- escribir· FAIL O GOOD
      );
   end COMPONENT;
   
