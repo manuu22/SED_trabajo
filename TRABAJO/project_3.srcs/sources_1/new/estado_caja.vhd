@@ -15,7 +15,7 @@ entity estado_caja is
 port (
  CLK :      in std_logic;
  SW_caja:   in std_logic;
- PW_RIGTH:  in std_logic;
+ PW_RIGTH:  in std_logic_vector(1 downto 0);
  
  LIGHT :    out std_logic_vector(0 TO 3)
 
@@ -47,7 +47,7 @@ begin
         next_state <= C_abriendo;
         end if;
  when C_abriendo =>
-        if (SW_caja = '1' AND PW_RIGTH = '1') then 
+        if (SW_caja = '1' AND PW_RIGTH = "11") then 
         next_state <= C_abierta;
         end if; 
  when C_abierta =>
@@ -70,7 +70,7 @@ begin
         LIGHT(1) <= '1';
     when C_abierta => 
         LIGHT(2) <= '1';
-        IF PW_RIGTH = '1' then
+        IF PW_RIGTH = "11" then
             LIGHT(3) <= '1';
         END IF;
      when others => 

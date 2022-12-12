@@ -39,14 +39,16 @@ entity Principal is
             LIGHT :          out std_logic_vector(0 to 3);
             segmentos:       out STD_LOGIC_VECTOR (0 to 6);
             ANODOS:          out STD_LOGIC_VECTOR (0 to 7);-- escribira true o error
-            LEDS:            out std_logic_vector(1 DOWNTO 0)
+            LEDS:            out std_logic_vector(1 DOWNTO 0);
+            trys:            out std_logic_vector(2 DOWNTO 0)
+           
            
            );
 end Principal;
 
 architecture Behavioral of Principal is
 
-    signal s_pswrd_correcta: std_logic;
+    signal s_pswrd_correcta: std_logic_vector(1 downto 0);
     signal s_sync:           std_logic;
     signal s_pswrd:          std_logic;
     signal s_tiempo:         std_logic_vector(0 to 2);
@@ -56,7 +58,7 @@ COMPONENT estado_caja is
      port (
       CLK :       in std_logic;
       SW_caja:    in std_logic;
-      PW_RIGTH:   in std_logic;
+      PW_RIGTH:   in std_logic_vector(1 downto 0);
       LIGHT :     out std_logic_vector(0 TO 3)
      );
   end COMPONENT;
@@ -86,14 +88,16 @@ COMPONENT estado_caja is
 	tiempo:          out std_logic_vector(0 to 2);--salida para poner cuanto tiempo queda
     cantidad:        out std_logic_vector(0 to 3);
     
+    intentos:       out std_logic_vector(2 downto 0);
+    
     CORRECTO:        out std_logic_vector(1 DOWNTO 0);
-    SI:              out STD_LOGIC
+    SI:              out std_logic_vector(1 downto 0)
      );
   end COMPONENT;
   
   COMPONENT DECODER is
   port (
-           PW :          in STD_LOGIC;
+           PW :          in std_logic_vector(1 downto 0);
            Tiempo_dec:   in STD_LOGIC_vector(0 to 2);
            cantidad:     in STD_LOGIC_vector(0 to 3);
            CLK:          in std_logic;
@@ -131,7 +135,8 @@ Inst_PSWRD_BOTON: PSWRD_BOTON PORT  MAP(
     tiempo=>s_tiempo,
     cantidad=>s_cantidad,
     reset=>SW_estado_caja,
-    CORRECTO =>LEDS(1 DOWNTO 0) -- ESTO SERAN LAS LUCES QUE SE ENCIENDEN SI ESTA BIEN CADA DIGITO DE LA CONTRASEÑA
+    intentos=>trys,
+    CORRECTO =>LEDS -- ESTO SERAN LAS LUCES QUE SE ENCIENDEN SI ESTA BIEN CADA DIGITO DE LA CONTRASEÑA
 );
 
 Inst_DECODER: DECODER PORT  MAP(

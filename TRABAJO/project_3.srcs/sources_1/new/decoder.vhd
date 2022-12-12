@@ -18,7 +18,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity decoder is
-    Port ( PW :          in STD_LOGIC;
+    Port ( PW :          in std_logic_vector(1 downto 0);
            Tiempo_dec :  in STD_LOGIC_VECTOR (0 to 2);
            Cantidad:     in STD_LOGIC_VECTOR (0 to 3);
            CLK:          in std_logic;
@@ -53,14 +53,14 @@ begin
 if rising_edge (aux_CLK) then
 
 case PW is 
-    when '0' =>
+    when "00" =>
          disp0:= "0111000";--F 
          disp1:="0001000" ;--A
          disp2:="1111001" ;--I
          disP3:="1110001" ;--L
         
     
-    when '1' => 
+    when "11" => 
          disp0:="0100000" ;--G 6
          disp1:="0000001" ;--O
          disp2:="0000001" ;--O
