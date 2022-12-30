@@ -39,7 +39,7 @@ entity Principal is
             LIGHT :          out std_logic_vector(0 to 3);
             segmentos:       out STD_LOGIC_VECTOR (0 to 6);
             ANODOS:          out STD_LOGIC_VECTOR (0 to 7);-- escribira true o error
-            LEDS:            out std_logic_vector(1 DOWNTO 0)
+            LEDS:            out std_logic_vector(2 DOWNTO 0)
             --trys:            out std_logic_vector(2 DOWNTO 0)
            
            
@@ -90,7 +90,7 @@ COMPONENT estado_caja is
     
     --intentos:       out std_logic_vector(2 downto 0);
     
-    CORRECTO:        out std_logic_vector(1 DOWNTO 0);
+    CORRECTO:        out std_logic_vector(2 DOWNTO 0);
     SI:              out std_logic_vector(1 downto 0)
      );
   end COMPONENT;
@@ -135,7 +135,7 @@ Inst_PSWRD_BOTON: PSWRD_BOTON PORT  MAP(
     tiempo=>s_tiempo,
     cantidad=>s_cantidad,
     reset=>SW_estado_caja,
-    intentos=>trys,
+    --intentos=>trys,
     CORRECTO =>LEDS -- ESTO SERAN LAS LUCES QUE SE ENCIENDEN SI ESTA BIEN CADA DIGITO DE LA CONTRASEÑA
 );
 

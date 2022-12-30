@@ -12,7 +12,7 @@ port (
 	IN_PSWRD :      in STD_LOGIC;
 	reset:          in std_logic;
 	
-    CORRECTO:       out std_logic_vector(1 DOWNTO 0);
+    CORRECTO:       out std_logic_vector(2 DOWNTO 0);
     SI:             OUT std_logic_vector(1 DOWNTO 0);
     
     --intentos:       out std_logic_vector(2 downto 0);
@@ -41,7 +41,7 @@ architecture Behavioral of PSWRD_BOTON is
 
 -- A PARTIR DE AQUI MAQUINA DE ESTADOS DE LA CONTRASEÑA
     SIGNAL numero: std_logic_vector(3 DOWNTO 0) := "0000";
-    type STATES is (Dig0,Dig1,Dig2);
+    type STATES is (Dig0,Dig1,Dig2,Dig3,Dig0_fail);
     signal current_state: STATES := Dig0;
     signal next_state: STATES;
 
@@ -126,7 +126,17 @@ begin
                  --intento <= intento -1;
              end if;
           when Dig2 =>
-             --intento <= "11"; 
+              if  numero = "0010" then --2
+                next_state <= Dig2;          
+             else 
+                 next_state <= Dig0;
+                 --intento <= intento -1;
+             end if; 
+          when Dig3 =>
+           when Dig0_fail =>
+            if  numero = "0101" then --5
+                next_state <= Dig1;
+            end if;
   
      end case;
    end if;
@@ -145,16 +155,22 @@ begin
  case current_state is
     when Dig0  =>
          si <= "10";
-         CORRECTO <= "00";
-     when Dig1  =>
+         CORRECTO <= "000";
+    when Dig1  =>
          si <= "10";
-         CORRECTO <= "01";     
-      when Dig2  =>
+         CORRECTO <= "001";     
+    when Dig2  =>
+         si <= "01";
+         CORRECTO <= "011";
+    when Dig3  =>
          si <= "11";
-         CORRECTO <= "11";
+         CORRECTO <= "111";
+    when Dig0_fail  =>
+         si <= "00";
+         CORRECTO <= "000";
      when others => 
          si <= "10";
-         CORRECTO <= "00";
+         CORRECTO <= "000";
 end case;
  end process;
  
