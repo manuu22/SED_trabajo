@@ -15,7 +15,7 @@ port (
     CORRECTO:       out std_logic_vector(1 DOWNTO 0);
     SI:             OUT std_logic_vector(1 DOWNTO 0);
     
-    intentos:       out std_logic_vector(2 downto 0);
+    --intentos:       out std_logic_vector(2 downto 0);
     
     tiempo:         out std_logic_vector(0 to 2);--salida para poner cuanto tiempo queda
     cantidad:       out std_logic_vector(0 to 3)--salida de cantidad de veces se ha pulsado
@@ -41,12 +41,12 @@ architecture Behavioral of PSWRD_BOTON is
 
 -- A PARTIR DE AQUI MAQUINA DE ESTADOS DE LA CONTRASEÑA
     SIGNAL numero: std_logic_vector(3 DOWNTO 0) := "0000";
-    type STATES is (Dig0,Dig1,Dig2,fail);
+    type STATES is (Dig0,Dig1,Dig2);
     signal current_state: STATES := Dig0;
     signal next_state: STATES;
 
 --INTENTOS
-    signal intento: unsigned(1 downto 0) := "11";
+    --signal intento: unsigned(1 downto 0) := "11";
 
 
 begin
@@ -98,14 +98,14 @@ begin
  -- con esto se puede cambiar para los resets
     if(reset='0') then
       current_state <= Dig0; 
-    end if;
+    --end if;
  
-    if rising_edge(clk) then
+    elsif rising_edge(clk) then
         current_state<= next_state; 
         end if;
  end process;
  
-   nextstate_decod: process (current_state, numero, clk_state, kkl, intento)
+   nextstate_decod: process (current_state, numero, clk_state, kkl)
  begin
      next_state <= current_state;
    if (clk_state='1' or clk_state='0') and kkl = '0'  then
@@ -115,29 +115,27 @@ begin
             if  numero = "0101" then --5
                 next_state <= Dig1;
             end if;
-            if intento = "00" then 
-                next_state <= fail;
-            end if;
+--            if intento = "00" then 
+--                next_state <= fail;
+--            end if;
           when Dig1 =>
              if  numero = "0110" then --6
                 next_state <= Dig2;          
              else 
                  next_state <= Dig0;
-                 intento <= intento -1;
+                 --intento <= intento -1;
              end if;
           when Dig2 =>
-             intento <= "11"; 
-          when FAIL =>
-            intento <= "11"; 
+             --intento <= "11"; 
   
      end case;
    end if;
-   case intento is 
-    when "00" =>intentos <= "000";
-    when "01" =>intentos <= "001";
-    when "10" =>intentos <= "011";
-    when "11" =>intentos <= "111";
-   end case;
+--   case intento is 
+--    when "00" =>intentos <= "000";
+--    when "01" =>intentos <= "001";
+--    when "10" =>intentos <= "011";
+--    when "11" =>intentos <= "111";
+--   end case;
    --intentos <= std_logic_vector(intento);
  end process;
  
@@ -154,9 +152,6 @@ begin
       when Dig2  =>
          si <= "11";
          CORRECTO <= "11";
-      when fail  =>
-         si <= "00";
-         CORRECTO <= "00";
      when others => 
          si <= "10";
          CORRECTO <= "00";

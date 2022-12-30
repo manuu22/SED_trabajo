@@ -39,8 +39,8 @@ entity Principal is
             LIGHT :          out std_logic_vector(0 to 3);
             segmentos:       out STD_LOGIC_VECTOR (0 to 6);
             ANODOS:          out STD_LOGIC_VECTOR (0 to 7);-- escribira true o error
-            LEDS:            out std_logic_vector(1 DOWNTO 0);
-            trys:            out std_logic_vector(2 DOWNTO 0)
+            LEDS:            out std_logic_vector(1 DOWNTO 0)
+            --trys:            out std_logic_vector(2 DOWNTO 0)
            
            
            );
@@ -88,7 +88,7 @@ COMPONENT estado_caja is
 	tiempo:          out std_logic_vector(0 to 2);--salida para poner cuanto tiempo queda
     cantidad:        out std_logic_vector(0 to 3);
     
-    intentos:       out std_logic_vector(2 downto 0);
+    --intentos:       out std_logic_vector(2 downto 0);
     
     CORRECTO:        out std_logic_vector(1 DOWNTO 0);
     SI:              out std_logic_vector(1 downto 0)

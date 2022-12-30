@@ -1,0 +1,840 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
+| Date         : Tue Dec 13 11:55:36 2022
+| Host         : MSI running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -max_paths 10 -report_unconstrained -file Principal_timing_summary_routed.rpt -pb Principal_timing_summary_routed.pb -rpx Principal_timing_summary_routed.rpx -warn_on_violation
+| Design       : Principal
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+Rule       Severity          Description                               Violations  
+---------  ----------------  ----------------------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell               137         
+SYNTH-10   Warning           Wide multiplier                           3           
+SYNTH-14   Warning           DSP cannot absorb non-zero init register  1           
+TIMING-20  Warning           Non-clocked latch                         2           
+LATCH-1    Advisory          Existing latches in the design            1           
+
+Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (151)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (335)
+5. checking no_input_delay (2)
+6. checking no_output_delay (22)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (2)
+
+1. checking no_clock (151)
+--------------------------
+ There are 118 register/latch pins with no clock driven by root clock pin: CLK (HIGH)
+
+ There are 19 register/latch pins with no clock driven by root clock pin: Inst_DECODER/aux_CLK_reg/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Inst_PSWRD_BOTON/FSM_sequential_current_state_reg[0]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Inst_PSWRD_BOTON/FSM_sequential_current_state_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Inst_PSWRD_BOTON/kkl_reg/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Inst_PSWRD_BOTON/numero_reg[0]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Inst_PSWRD_BOTON/numero_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Inst_PSWRD_BOTON/numero_reg[2]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Inst_PSWRD_BOTON/numero_reg[3]/Q (HIGH)
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (335)
+--------------------------------------------------
+ There are 335 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (2)
+------------------------------
+ There are 2 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (22)
+--------------------------------
+ There are 22 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (2)
+----------------------------
+ There are 2 combinational latch loops in the design through latch input (HIGH)
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                  357          inf        0.000                      0                  357           NA           NA                      NA                    NA  
+
+
+There are no user specified timing constraints.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay           357 Endpoints
+Min Delay           357 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 Inst_PSWRD_BOTON/segundos_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_PSWRD_BOTON/segundos_reg[0]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        13.143ns  (logic 7.801ns (59.354%)  route 5.342ns (40.646%))
+  Logic Levels:           10  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y73         FDRE                         0.000     0.000 r  Inst_PSWRD_BOTON/segundos_reg[0]/C
+    SLICE_X12Y73         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  Inst_PSWRD_BOTON/segundos_reg[0]/Q
+                         net (fo=3, routed)           0.783     1.301    Inst_PSWRD_BOTON/segundos_reg[0]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_B[0]_PCOUT[47])
+                                                      3.851     5.152 r  Inst_PSWRD_BOTON/segundos2__0/PCOUT[47]
+                         net (fo=1, routed)           0.002     5.154    Inst_PSWRD_BOTON/segundos2__0_n_106
+    DSP48_X0Y31          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518     6.672 r  Inst_PSWRD_BOTON/segundos2__1/P[3]
+                         net (fo=2, routed)           1.340     8.013    Inst_PSWRD_BOTON/segundos2__1_n_102
+    SLICE_X9Y79          LUT2 (Prop_lut2_I0_O)        0.124     8.137 r  Inst_PSWRD_BOTON/segundos2_carry__0_i_4/O
+                         net (fo=1, routed)           0.000     8.137    Inst_PSWRD_BOTON/segundos2_carry__0_i_4_n_0
+    SLICE_X9Y79          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.669 r  Inst_PSWRD_BOTON/segundos2_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.669    Inst_PSWRD_BOTON/segundos2_carry__0_n_0
+    SLICE_X9Y80          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.783 r  Inst_PSWRD_BOTON/segundos2_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     8.783    Inst_PSWRD_BOTON/segundos2_carry__1_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     9.096 f  Inst_PSWRD_BOTON/segundos2_carry__2/O[3]
+                         net (fo=2, routed)           0.962    10.058    Inst_PSWRD_BOTON/segundos2_carry__2_n_4
+    SLICE_X11Y79         LUT2 (Prop_lut2_I1_O)        0.306    10.364 r  Inst_PSWRD_BOTON/segundos1_carry__2_i_4/O
+                         net (fo=1, routed)           0.000    10.364    Inst_PSWRD_BOTON/segundos1_carry__2_i_4_n_0
+    SLICE_X11Y79         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    10.765 r  Inst_PSWRD_BOTON/segundos1_carry__2/CO[3]
+                         net (fo=1, routed)           1.126    11.891    Inst_PSWRD_BOTON/segundos1_carry__2_n_0
+    SLICE_X7Y79          LUT2 (Prop_lut2_I1_O)        0.124    12.015 r  Inst_PSWRD_BOTON/segundos2__1_i_1/O
+                         net (fo=36, routed)          1.128    13.143    Inst_PSWRD_BOTON/tempo0
+    SLICE_X12Y73         FDRE                                         r  Inst_PSWRD_BOTON/segundos_reg[0]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_PSWRD_BOTON/segundos_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_PSWRD_BOTON/segundos_reg[1]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        13.143ns  (logic 7.801ns (59.354%)  route 5.342ns (40.646%))
+  Logic Levels:           10  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y73         FDRE                         0.000     0.000 r  Inst_PSWRD_BOTON/segundos_reg[0]/C
+    SLICE_X12Y73         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  Inst_PSWRD_BOTON/segundos_reg[0]/Q
+                         net (fo=3, routed)           0.783     1.301    Inst_PSWRD_BOTON/segundos_reg[0]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_B[0]_PCOUT[47])
+                                                      3.851     5.152 r  Inst_PSWRD_BOTON/segundos2__0/PCOUT[47]
+                         net (fo=1, routed)           0.002     5.154    Inst_PSWRD_BOTON/segundos2__0_n_106
+    DSP48_X0Y31          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518     6.672 r  Inst_PSWRD_BOTON/segundos2__1/P[3]
+                         net (fo=2, routed)           1.340     8.013    Inst_PSWRD_BOTON/segundos2__1_n_102
+    SLICE_X9Y79          LUT2 (Prop_lut2_I0_O)        0.124     8.137 r  Inst_PSWRD_BOTON/segundos2_carry__0_i_4/O
+                         net (fo=1, routed)           0.000     8.137    Inst_PSWRD_BOTON/segundos2_carry__0_i_4_n_0
+    SLICE_X9Y79          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.669 r  Inst_PSWRD_BOTON/segundos2_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.669    Inst_PSWRD_BOTON/segundos2_carry__0_n_0
+    SLICE_X9Y80          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.783 r  Inst_PSWRD_BOTON/segundos2_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     8.783    Inst_PSWRD_BOTON/segundos2_carry__1_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     9.096 f  Inst_PSWRD_BOTON/segundos2_carry__2/O[3]
+                         net (fo=2, routed)           0.962    10.058    Inst_PSWRD_BOTON/segundos2_carry__2_n_4
+    SLICE_X11Y79         LUT2 (Prop_lut2_I1_O)        0.306    10.364 r  Inst_PSWRD_BOTON/segundos1_carry__2_i_4/O
+                         net (fo=1, routed)           0.000    10.364    Inst_PSWRD_BOTON/segundos1_carry__2_i_4_n_0
+    SLICE_X11Y79         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    10.765 r  Inst_PSWRD_BOTON/segundos1_carry__2/CO[3]
+                         net (fo=1, routed)           1.126    11.891    Inst_PSWRD_BOTON/segundos1_carry__2_n_0
+    SLICE_X7Y79          LUT2 (Prop_lut2_I1_O)        0.124    12.015 r  Inst_PSWRD_BOTON/segundos2__1_i_1/O
+                         net (fo=36, routed)          1.128    13.143    Inst_PSWRD_BOTON/tempo0
+    SLICE_X12Y73         FDRE                                         r  Inst_PSWRD_BOTON/segundos_reg[1]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_PSWRD_BOTON/segundos_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_PSWRD_BOTON/segundos_reg[2]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        13.143ns  (logic 7.801ns (59.354%)  route 5.342ns (40.646%))
+  Logic Levels:           10  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y73         FDRE                         0.000     0.000 r  Inst_PSWRD_BOTON/segundos_reg[0]/C
+    SLICE_X12Y73         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  Inst_PSWRD_BOTON/segundos_reg[0]/Q
+                         net (fo=3, routed)           0.783     1.301    Inst_PSWRD_BOTON/segundos_reg[0]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_B[0]_PCOUT[47])
+                                                      3.851     5.152 r  Inst_PSWRD_BOTON/segundos2__0/PCOUT[47]
+                         net (fo=1, routed)           0.002     5.154    Inst_PSWRD_BOTON/segundos2__0_n_106
+    DSP48_X0Y31          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518     6.672 r  Inst_PSWRD_BOTON/segundos2__1/P[3]
+                         net (fo=2, routed)           1.340     8.013    Inst_PSWRD_BOTON/segundos2__1_n_102
+    SLICE_X9Y79          LUT2 (Prop_lut2_I0_O)        0.124     8.137 r  Inst_PSWRD_BOTON/segundos2_carry__0_i_4/O
+                         net (fo=1, routed)           0.000     8.137    Inst_PSWRD_BOTON/segundos2_carry__0_i_4_n_0
+    SLICE_X9Y79          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.669 r  Inst_PSWRD_BOTON/segundos2_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.669    Inst_PSWRD_BOTON/segundos2_carry__0_n_0
+    SLICE_X9Y80          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.783 r  Inst_PSWRD_BOTON/segundos2_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     8.783    Inst_PSWRD_BOTON/segundos2_carry__1_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     9.096 f  Inst_PSWRD_BOTON/segundos2_carry__2/O[3]
+                         net (fo=2, routed)           0.962    10.058    Inst_PSWRD_BOTON/segundos2_carry__2_n_4
+    SLICE_X11Y79         LUT2 (Prop_lut2_I1_O)        0.306    10.364 r  Inst_PSWRD_BOTON/segundos1_carry__2_i_4/O
+                         net (fo=1, routed)           0.000    10.364    Inst_PSWRD_BOTON/segundos1_carry__2_i_4_n_0
+    SLICE_X11Y79         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    10.765 r  Inst_PSWRD_BOTON/segundos1_carry__2/CO[3]
+                         net (fo=1, routed)           1.126    11.891    Inst_PSWRD_BOTON/segundos1_carry__2_n_0
+    SLICE_X7Y79          LUT2 (Prop_lut2_I1_O)        0.124    12.015 r  Inst_PSWRD_BOTON/segundos2__1_i_1/O
+                         net (fo=36, routed)          1.128    13.143    Inst_PSWRD_BOTON/tempo0
+    SLICE_X12Y73         FDRE                                         r  Inst_PSWRD_BOTON/segundos_reg[2]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_PSWRD_BOTON/segundos_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_PSWRD_BOTON/segundos_reg[3]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        13.143ns  (logic 7.801ns (59.354%)  route 5.342ns (40.646%))
+  Logic Levels:           10  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y73         FDRE                         0.000     0.000 r  Inst_PSWRD_BOTON/segundos_reg[0]/C
+    SLICE_X12Y73         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  Inst_PSWRD_BOTON/segundos_reg[0]/Q
+                         net (fo=3, routed)           0.783     1.301    Inst_PSWRD_BOTON/segundos_reg[0]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_B[0]_PCOUT[47])
+                                                      3.851     5.152 r  Inst_PSWRD_BOTON/segundos2__0/PCOUT[47]
+                         net (fo=1, routed)           0.002     5.154    Inst_PSWRD_BOTON/segundos2__0_n_106
+    DSP48_X0Y31          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518     6.672 r  Inst_PSWRD_BOTON/segundos2__1/P[3]
+                         net (fo=2, routed)           1.340     8.013    Inst_PSWRD_BOTON/segundos2__1_n_102
+    SLICE_X9Y79          LUT2 (Prop_lut2_I0_O)        0.124     8.137 r  Inst_PSWRD_BOTON/segundos2_carry__0_i_4/O
+                         net (fo=1, routed)           0.000     8.137    Inst_PSWRD_BOTON/segundos2_carry__0_i_4_n_0
+    SLICE_X9Y79          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.669 r  Inst_PSWRD_BOTON/segundos2_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.669    Inst_PSWRD_BOTON/segundos2_carry__0_n_0
+    SLICE_X9Y80          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.783 r  Inst_PSWRD_BOTON/segundos2_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     8.783    Inst_PSWRD_BOTON/segundos2_carry__1_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     9.096 f  Inst_PSWRD_BOTON/segundos2_carry__2/O[3]
+                         net (fo=2, routed)           0.962    10.058    Inst_PSWRD_BOTON/segundos2_carry__2_n_4
+    SLICE_X11Y79         LUT2 (Prop_lut2_I1_O)        0.306    10.364 r  Inst_PSWRD_BOTON/segundos1_carry__2_i_4/O
+                         net (fo=1, routed)           0.000    10.364    Inst_PSWRD_BOTON/segundos1_carry__2_i_4_n_0
+    SLICE_X11Y79         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    10.765 r  Inst_PSWRD_BOTON/segundos1_carry__2/CO[3]
+                         net (fo=1, routed)           1.126    11.891    Inst_PSWRD_BOTON/segundos1_carry__2_n_0
+    SLICE_X7Y79          LUT2 (Prop_lut2_I1_O)        0.124    12.015 r  Inst_PSWRD_BOTON/segundos2__1_i_1/O
+                         net (fo=36, routed)          1.128    13.143    Inst_PSWRD_BOTON/tempo0
+    SLICE_X12Y73         FDRE                                         r  Inst_PSWRD_BOTON/segundos_reg[3]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_PSWRD_BOTON/segundos_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_PSWRD_BOTON/segundos_reg[4]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        13.129ns  (logic 7.801ns (59.418%)  route 5.328ns (40.582%))
+  Logic Levels:           10  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y73         FDRE                         0.000     0.000 r  Inst_PSWRD_BOTON/segundos_reg[0]/C
+    SLICE_X12Y73         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  Inst_PSWRD_BOTON/segundos_reg[0]/Q
+                         net (fo=3, routed)           0.783     1.301    Inst_PSWRD_BOTON/segundos_reg[0]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_B[0]_PCOUT[47])
+                                                      3.851     5.152 r  Inst_PSWRD_BOTON/segundos2__0/PCOUT[47]
+                         net (fo=1, routed)           0.002     5.154    Inst_PSWRD_BOTON/segundos2__0_n_106
+    DSP48_X0Y31          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518     6.672 r  Inst_PSWRD_BOTON/segundos2__1/P[3]
+                         net (fo=2, routed)           1.340     8.013    Inst_PSWRD_BOTON/segundos2__1_n_102
+    SLICE_X9Y79          LUT2 (Prop_lut2_I0_O)        0.124     8.137 r  Inst_PSWRD_BOTON/segundos2_carry__0_i_4/O
+                         net (fo=1, routed)           0.000     8.137    Inst_PSWRD_BOTON/segundos2_carry__0_i_4_n_0
+    SLICE_X9Y79          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.669 r  Inst_PSWRD_BOTON/segundos2_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.669    Inst_PSWRD_BOTON/segundos2_carry__0_n_0
+    SLICE_X9Y80          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.783 r  Inst_PSWRD_BOTON/segundos2_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     8.783    Inst_PSWRD_BOTON/segundos2_carry__1_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     9.096 f  Inst_PSWRD_BOTON/segundos2_carry__2/O[3]
+                         net (fo=2, routed)           0.962    10.058    Inst_PSWRD_BOTON/segundos2_carry__2_n_4
+    SLICE_X11Y79         LUT2 (Prop_lut2_I1_O)        0.306    10.364 r  Inst_PSWRD_BOTON/segundos1_carry__2_i_4/O
+                         net (fo=1, routed)           0.000    10.364    Inst_PSWRD_BOTON/segundos1_carry__2_i_4_n_0
+    SLICE_X11Y79         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    10.765 r  Inst_PSWRD_BOTON/segundos1_carry__2/CO[3]
+                         net (fo=1, routed)           1.126    11.891    Inst_PSWRD_BOTON/segundos1_carry__2_n_0
+    SLICE_X7Y79          LUT2 (Prop_lut2_I1_O)        0.124    12.015 r  Inst_PSWRD_BOTON/segundos2__1_i_1/O
+                         net (fo=36, routed)          1.114    13.129    Inst_PSWRD_BOTON/tempo0
+    SLICE_X12Y74         FDRE                                         r  Inst_PSWRD_BOTON/segundos_reg[4]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_PSWRD_BOTON/segundos_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_PSWRD_BOTON/segundos_reg[5]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        13.129ns  (logic 7.801ns (59.418%)  route 5.328ns (40.582%))
+  Logic Levels:           10  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y73         FDRE                         0.000     0.000 r  Inst_PSWRD_BOTON/segundos_reg[0]/C
+    SLICE_X12Y73         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  Inst_PSWRD_BOTON/segundos_reg[0]/Q
+                         net (fo=3, routed)           0.783     1.301    Inst_PSWRD_BOTON/segundos_reg[0]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_B[0]_PCOUT[47])
+                                                      3.851     5.152 r  Inst_PSWRD_BOTON/segundos2__0/PCOUT[47]
+                         net (fo=1, routed)           0.002     5.154    Inst_PSWRD_BOTON/segundos2__0_n_106
+    DSP48_X0Y31          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518     6.672 r  Inst_PSWRD_BOTON/segundos2__1/P[3]
+                         net (fo=2, routed)           1.340     8.013    Inst_PSWRD_BOTON/segundos2__1_n_102
+    SLICE_X9Y79          LUT2 (Prop_lut2_I0_O)        0.124     8.137 r  Inst_PSWRD_BOTON/segundos2_carry__0_i_4/O
+                         net (fo=1, routed)           0.000     8.137    Inst_PSWRD_BOTON/segundos2_carry__0_i_4_n_0
+    SLICE_X9Y79          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.669 r  Inst_PSWRD_BOTON/segundos2_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.669    Inst_PSWRD_BOTON/segundos2_carry__0_n_0
+    SLICE_X9Y80          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.783 r  Inst_PSWRD_BOTON/segundos2_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     8.783    Inst_PSWRD_BOTON/segundos2_carry__1_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     9.096 f  Inst_PSWRD_BOTON/segundos2_carry__2/O[3]
+                         net (fo=2, routed)           0.962    10.058    Inst_PSWRD_BOTON/segundos2_carry__2_n_4
+    SLICE_X11Y79         LUT2 (Prop_lut2_I1_O)        0.306    10.364 r  Inst_PSWRD_BOTON/segundos1_carry__2_i_4/O
+                         net (fo=1, routed)           0.000    10.364    Inst_PSWRD_BOTON/segundos1_carry__2_i_4_n_0
+    SLICE_X11Y79         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    10.765 r  Inst_PSWRD_BOTON/segundos1_carry__2/CO[3]
+                         net (fo=1, routed)           1.126    11.891    Inst_PSWRD_BOTON/segundos1_carry__2_n_0
+    SLICE_X7Y79          LUT2 (Prop_lut2_I1_O)        0.124    12.015 r  Inst_PSWRD_BOTON/segundos2__1_i_1/O
+                         net (fo=36, routed)          1.114    13.129    Inst_PSWRD_BOTON/tempo0
+    SLICE_X12Y74         FDRE                                         r  Inst_PSWRD_BOTON/segundos_reg[5]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_PSWRD_BOTON/segundos_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_PSWRD_BOTON/segundos_reg[6]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        13.129ns  (logic 7.801ns (59.418%)  route 5.328ns (40.582%))
+  Logic Levels:           10  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y73         FDRE                         0.000     0.000 r  Inst_PSWRD_BOTON/segundos_reg[0]/C
+    SLICE_X12Y73         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  Inst_PSWRD_BOTON/segundos_reg[0]/Q
+                         net (fo=3, routed)           0.783     1.301    Inst_PSWRD_BOTON/segundos_reg[0]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_B[0]_PCOUT[47])
+                                                      3.851     5.152 r  Inst_PSWRD_BOTON/segundos2__0/PCOUT[47]
+                         net (fo=1, routed)           0.002     5.154    Inst_PSWRD_BOTON/segundos2__0_n_106
+    DSP48_X0Y31          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518     6.672 r  Inst_PSWRD_BOTON/segundos2__1/P[3]
+                         net (fo=2, routed)           1.340     8.013    Inst_PSWRD_BOTON/segundos2__1_n_102
+    SLICE_X9Y79          LUT2 (Prop_lut2_I0_O)        0.124     8.137 r  Inst_PSWRD_BOTON/segundos2_carry__0_i_4/O
+                         net (fo=1, routed)           0.000     8.137    Inst_PSWRD_BOTON/segundos2_carry__0_i_4_n_0
+    SLICE_X9Y79          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.669 r  Inst_PSWRD_BOTON/segundos2_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.669    Inst_PSWRD_BOTON/segundos2_carry__0_n_0
+    SLICE_X9Y80          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.783 r  Inst_PSWRD_BOTON/segundos2_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     8.783    Inst_PSWRD_BOTON/segundos2_carry__1_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     9.096 f  Inst_PSWRD_BOTON/segundos2_carry__2/O[3]
+                         net (fo=2, routed)           0.962    10.058    Inst_PSWRD_BOTON/segundos2_carry__2_n_4
+    SLICE_X11Y79         LUT2 (Prop_lut2_I1_O)        0.306    10.364 r  Inst_PSWRD_BOTON/segundos1_carry__2_i_4/O
+                         net (fo=1, routed)           0.000    10.364    Inst_PSWRD_BOTON/segundos1_carry__2_i_4_n_0
+    SLICE_X11Y79         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    10.765 r  Inst_PSWRD_BOTON/segundos1_carry__2/CO[3]
+                         net (fo=1, routed)           1.126    11.891    Inst_PSWRD_BOTON/segundos1_carry__2_n_0
+    SLICE_X7Y79          LUT2 (Prop_lut2_I1_O)        0.124    12.015 r  Inst_PSWRD_BOTON/segundos2__1_i_1/O
+                         net (fo=36, routed)          1.114    13.129    Inst_PSWRD_BOTON/tempo0
+    SLICE_X12Y74         FDRE                                         r  Inst_PSWRD_BOTON/segundos_reg[6]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_PSWRD_BOTON/segundos_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_PSWRD_BOTON/segundos_reg[7]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        13.129ns  (logic 7.801ns (59.418%)  route 5.328ns (40.582%))
+  Logic Levels:           10  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y73         FDRE                         0.000     0.000 r  Inst_PSWRD_BOTON/segundos_reg[0]/C
+    SLICE_X12Y73         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  Inst_PSWRD_BOTON/segundos_reg[0]/Q
+                         net (fo=3, routed)           0.783     1.301    Inst_PSWRD_BOTON/segundos_reg[0]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_B[0]_PCOUT[47])
+                                                      3.851     5.152 r  Inst_PSWRD_BOTON/segundos2__0/PCOUT[47]
+                         net (fo=1, routed)           0.002     5.154    Inst_PSWRD_BOTON/segundos2__0_n_106
+    DSP48_X0Y31          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518     6.672 r  Inst_PSWRD_BOTON/segundos2__1/P[3]
+                         net (fo=2, routed)           1.340     8.013    Inst_PSWRD_BOTON/segundos2__1_n_102
+    SLICE_X9Y79          LUT2 (Prop_lut2_I0_O)        0.124     8.137 r  Inst_PSWRD_BOTON/segundos2_carry__0_i_4/O
+                         net (fo=1, routed)           0.000     8.137    Inst_PSWRD_BOTON/segundos2_carry__0_i_4_n_0
+    SLICE_X9Y79          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.669 r  Inst_PSWRD_BOTON/segundos2_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.669    Inst_PSWRD_BOTON/segundos2_carry__0_n_0
+    SLICE_X9Y80          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.783 r  Inst_PSWRD_BOTON/segundos2_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     8.783    Inst_PSWRD_BOTON/segundos2_carry__1_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     9.096 f  Inst_PSWRD_BOTON/segundos2_carry__2/O[3]
+                         net (fo=2, routed)           0.962    10.058    Inst_PSWRD_BOTON/segundos2_carry__2_n_4
+    SLICE_X11Y79         LUT2 (Prop_lut2_I1_O)        0.306    10.364 r  Inst_PSWRD_BOTON/segundos1_carry__2_i_4/O
+                         net (fo=1, routed)           0.000    10.364    Inst_PSWRD_BOTON/segundos1_carry__2_i_4_n_0
+    SLICE_X11Y79         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    10.765 r  Inst_PSWRD_BOTON/segundos1_carry__2/CO[3]
+                         net (fo=1, routed)           1.126    11.891    Inst_PSWRD_BOTON/segundos1_carry__2_n_0
+    SLICE_X7Y79          LUT2 (Prop_lut2_I1_O)        0.124    12.015 r  Inst_PSWRD_BOTON/segundos2__1_i_1/O
+                         net (fo=36, routed)          1.114    13.129    Inst_PSWRD_BOTON/tempo0
+    SLICE_X12Y74         FDRE                                         r  Inst_PSWRD_BOTON/segundos_reg[7]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_PSWRD_BOTON/segundos_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_PSWRD_BOTON/segundos_reg[10]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        12.970ns  (logic 7.801ns (60.145%)  route 5.169ns (39.855%))
+  Logic Levels:           10  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y73         FDRE                         0.000     0.000 r  Inst_PSWRD_BOTON/segundos_reg[0]/C
+    SLICE_X12Y73         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  Inst_PSWRD_BOTON/segundos_reg[0]/Q
+                         net (fo=3, routed)           0.783     1.301    Inst_PSWRD_BOTON/segundos_reg[0]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_B[0]_PCOUT[47])
+                                                      3.851     5.152 r  Inst_PSWRD_BOTON/segundos2__0/PCOUT[47]
+                         net (fo=1, routed)           0.002     5.154    Inst_PSWRD_BOTON/segundos2__0_n_106
+    DSP48_X0Y31          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518     6.672 r  Inst_PSWRD_BOTON/segundos2__1/P[3]
+                         net (fo=2, routed)           1.340     8.013    Inst_PSWRD_BOTON/segundos2__1_n_102
+    SLICE_X9Y79          LUT2 (Prop_lut2_I0_O)        0.124     8.137 r  Inst_PSWRD_BOTON/segundos2_carry__0_i_4/O
+                         net (fo=1, routed)           0.000     8.137    Inst_PSWRD_BOTON/segundos2_carry__0_i_4_n_0
+    SLICE_X9Y79          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.669 r  Inst_PSWRD_BOTON/segundos2_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.669    Inst_PSWRD_BOTON/segundos2_carry__0_n_0
+    SLICE_X9Y80          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.783 r  Inst_PSWRD_BOTON/segundos2_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     8.783    Inst_PSWRD_BOTON/segundos2_carry__1_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     9.096 f  Inst_PSWRD_BOTON/segundos2_carry__2/O[3]
+                         net (fo=2, routed)           0.962    10.058    Inst_PSWRD_BOTON/segundos2_carry__2_n_4
+    SLICE_X11Y79         LUT2 (Prop_lut2_I1_O)        0.306    10.364 r  Inst_PSWRD_BOTON/segundos1_carry__2_i_4/O
+                         net (fo=1, routed)           0.000    10.364    Inst_PSWRD_BOTON/segundos1_carry__2_i_4_n_0
+    SLICE_X11Y79         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    10.765 r  Inst_PSWRD_BOTON/segundos1_carry__2/CO[3]
+                         net (fo=1, routed)           1.126    11.891    Inst_PSWRD_BOTON/segundos1_carry__2_n_0
+    SLICE_X7Y79          LUT2 (Prop_lut2_I1_O)        0.124    12.015 r  Inst_PSWRD_BOTON/segundos2__1_i_1/O
+                         net (fo=36, routed)          0.955    12.970    Inst_PSWRD_BOTON/tempo0
+    SLICE_X12Y75         FDRE                                         r  Inst_PSWRD_BOTON/segundos_reg[10]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_PSWRD_BOTON/segundos_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_PSWRD_BOTON/segundos_reg[11]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        12.970ns  (logic 7.801ns (60.145%)  route 5.169ns (39.855%))
+  Logic Levels:           10  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y73         FDRE                         0.000     0.000 r  Inst_PSWRD_BOTON/segundos_reg[0]/C
+    SLICE_X12Y73         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  Inst_PSWRD_BOTON/segundos_reg[0]/Q
+                         net (fo=3, routed)           0.783     1.301    Inst_PSWRD_BOTON/segundos_reg[0]
+    DSP48_X0Y30          DSP48E1 (Prop_dsp48e1_B[0]_PCOUT[47])
+                                                      3.851     5.152 r  Inst_PSWRD_BOTON/segundos2__0/PCOUT[47]
+                         net (fo=1, routed)           0.002     5.154    Inst_PSWRD_BOTON/segundos2__0_n_106
+    DSP48_X0Y31          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518     6.672 r  Inst_PSWRD_BOTON/segundos2__1/P[3]
+                         net (fo=2, routed)           1.340     8.013    Inst_PSWRD_BOTON/segundos2__1_n_102
+    SLICE_X9Y79          LUT2 (Prop_lut2_I0_O)        0.124     8.137 r  Inst_PSWRD_BOTON/segundos2_carry__0_i_4/O
+                         net (fo=1, routed)           0.000     8.137    Inst_PSWRD_BOTON/segundos2_carry__0_i_4_n_0
+    SLICE_X9Y79          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     8.669 r  Inst_PSWRD_BOTON/segundos2_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.669    Inst_PSWRD_BOTON/segundos2_carry__0_n_0
+    SLICE_X9Y80          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.783 r  Inst_PSWRD_BOTON/segundos2_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     8.783    Inst_PSWRD_BOTON/segundos2_carry__1_n_0
+    SLICE_X9Y81          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     9.096 f  Inst_PSWRD_BOTON/segundos2_carry__2/O[3]
+                         net (fo=2, routed)           0.962    10.058    Inst_PSWRD_BOTON/segundos2_carry__2_n_4
+    SLICE_X11Y79         LUT2 (Prop_lut2_I1_O)        0.306    10.364 r  Inst_PSWRD_BOTON/segundos1_carry__2_i_4/O
+                         net (fo=1, routed)           0.000    10.364    Inst_PSWRD_BOTON/segundos1_carry__2_i_4_n_0
+    SLICE_X11Y79         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    10.765 r  Inst_PSWRD_BOTON/segundos1_carry__2/CO[3]
+                         net (fo=1, routed)           1.126    11.891    Inst_PSWRD_BOTON/segundos1_carry__2_n_0
+    SLICE_X7Y79          LUT2 (Prop_lut2_I1_O)        0.124    12.015 r  Inst_PSWRD_BOTON/segundos2__1_i_1/O
+                         net (fo=36, routed)          0.955    12.970    Inst_PSWRD_BOTON/tempo0
+    SLICE_X12Y75         FDRE                                         r  Inst_PSWRD_BOTON/segundos_reg[11]/CE
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 Inst_syncron/sreg_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_syncron/sreg_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.324ns  (logic 0.141ns (43.491%)  route 0.183ns (56.509%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y84          FDRE                         0.000     0.000 r  Inst_syncron/sreg_reg[1]/C
+    SLICE_X0Y84          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_syncron/sreg_reg[1]/Q
+                         net (fo=2, routed)           0.183     0.324    Inst_syncron/sreg[1]
+    SLICE_X0Y84          FDRE                                         r  Inst_syncron/sreg_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_syncron/sreg_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_syncron/sreg_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.326ns  (logic 0.141ns (43.258%)  route 0.185ns (56.742%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y84          FDRE                         0.000     0.000 r  Inst_syncron/sreg_reg[0]/C
+    SLICE_X0Y84          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_syncron/sreg_reg[0]/Q
+                         net (fo=2, routed)           0.185     0.326    Inst_syncron/sreg[0]
+    SLICE_X0Y84          FDRE                                         r  Inst_syncron/sreg_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/bucle_reg[5]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/AN_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.331ns  (logic 0.186ns (56.109%)  route 0.145ns (43.891%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y75          FDRE                         0.000     0.000 r  Inst_DECODER/bucle_reg[5]/C
+    SLICE_X0Y75          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/bucle_reg[5]/Q
+                         net (fo=11, routed)          0.145     0.286    Inst_DECODER/bucle[5]
+    SLICE_X0Y76          LUT6 (Prop_lut6_I5_O)        0.045     0.331 r  Inst_DECODER/AN[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.331    Inst_DECODER/AN[0]
+    SLICE_X0Y76          FDRE                                         r  Inst_DECODER/AN_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/bucle_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/AN_reg[3]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.344ns  (logic 0.186ns (54.147%)  route 0.158ns (45.853%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y75          FDRE                         0.000     0.000 r  Inst_DECODER/bucle_reg[3]/C
+    SLICE_X0Y75          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/bucle_reg[3]/Q
+                         net (fo=11, routed)          0.158     0.299    Inst_DECODER/bucle[3]
+    SLICE_X0Y76          LUT6 (Prop_lut6_I0_O)        0.045     0.344 r  Inst_DECODER/AN[3]_i_1/O
+                         net (fo=1, routed)           0.000     0.344    Inst_DECODER/AN[3]
+    SLICE_X0Y76          FDRE                                         r  Inst_DECODER/AN_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/bucle_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/AN_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.345ns  (logic 0.186ns (53.990%)  route 0.159ns (46.010%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y75          FDRE                         0.000     0.000 r  Inst_DECODER/bucle_reg[3]/C
+    SLICE_X0Y75          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/bucle_reg[3]/Q
+                         net (fo=11, routed)          0.159     0.300    Inst_DECODER/bucle[3]
+    SLICE_X0Y76          LUT6 (Prop_lut6_I1_O)        0.045     0.345 r  Inst_DECODER/AN[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.345    Inst_DECODER/AN[2]
+    SLICE_X0Y76          FDRE                                         r  Inst_DECODER/AN_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
+                            (rising edge-triggered cell FDPE)
+  Destination:            Inst_estado_caja/FSM_onehot_current_state_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.345ns  (logic 0.186ns (53.946%)  route 0.159ns (46.054%))
+  Logic Levels:           2  (FDPE=1 LUT4=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y77          FDPE                         0.000     0.000 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/C
+    SLICE_X0Y77          FDPE (Prop_fdpe_C_Q)         0.141     0.141 r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/Q
+                         net (fo=4, routed)           0.159     0.300    Inst_estado_caja/LIGHT_OBUF[2]
+    SLICE_X0Y77          LUT4 (Prop_lut4_I1_O)        0.045     0.345 r  Inst_estado_caja/FSM_onehot_current_state[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.345    Inst_estado_caja/FSM_onehot_current_state[0]_i_1_n_0
+    SLICE_X0Y77          FDPE                                         r  Inst_estado_caja/FSM_onehot_current_state_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/bucle_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/bucle_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.356ns  (logic 0.141ns (39.597%)  route 0.215ns (60.403%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y74          FDRE                         0.000     0.000 r  Inst_DECODER/bucle_reg[0]/C
+    SLICE_X0Y74          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/bucle_reg[0]/Q
+                         net (fo=11, routed)          0.215     0.356    Inst_DECODER/bucle[0]
+    SLICE_X0Y75          FDRE                                         r  Inst_DECODER/bucle_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/bucle_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/bucle_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.362ns  (logic 0.141ns (38.935%)  route 0.221ns (61.065%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y75          FDRE                         0.000     0.000 r  Inst_DECODER/bucle_reg[1]/C
+    SLICE_X0Y75          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/bucle_reg[1]/Q
+                         net (fo=11, routed)          0.221     0.362    Inst_DECODER/bucle[1]
+    SLICE_X0Y75          FDRE                                         r  Inst_DECODER/bucle_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/bucle_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/AN_reg[7]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.365ns  (logic 0.186ns (50.981%)  route 0.179ns (49.019%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y74          FDRE                         0.000     0.000 r  Inst_DECODER/bucle_reg[4]/C
+    SLICE_X0Y74          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/bucle_reg[4]/Q
+                         net (fo=11, routed)          0.179     0.320    Inst_DECODER/bucle[4]
+    SLICE_X0Y73          LUT6 (Prop_lut6_I5_O)        0.045     0.365 r  Inst_DECODER/AN[7]_i_1/O
+                         net (fo=1, routed)           0.000     0.365    Inst_DECODER/AN[7]
+    SLICE_X0Y73          FDRE                                         r  Inst_DECODER/AN_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 Inst_DECODER/bucle_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            Inst_DECODER/AN_reg[5]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.368ns  (logic 0.186ns (50.579%)  route 0.182ns (49.421%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y74          FDRE                         0.000     0.000 r  Inst_DECODER/bucle_reg[0]/C
+    SLICE_X0Y74          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  Inst_DECODER/bucle_reg[0]/Q
+                         net (fo=11, routed)          0.182     0.323    Inst_DECODER/bucle[0]
+    SLICE_X0Y73          LUT6 (Prop_lut6_I2_O)        0.045     0.368 r  Inst_DECODER/AN[5]_i_1/O
+                         net (fo=1, routed)           0.000     0.368    Inst_DECODER/AN[5]
+    SLICE_X0Y73          FDRE                                         r  Inst_DECODER/AN_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
