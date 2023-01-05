@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Principal is
+entity TOP is
     Port (  SW_estado_caja : in STD_LOGIC;--para ir a abrir caja o cerrarla al instante
             boton:           in std_logic;
             CLK :            in std_logic;
@@ -44,9 +44,9 @@ entity Principal is
            
            
            );
-end Principal;
+end TOP;
 
-architecture Behavioral of Principal is
+architecture STRUCTURAL of TOP is
 
     signal s_pswrd_correcta: std_logic_vector(1 downto 0);
     signal s_sync:           std_logic;
@@ -147,4 +147,4 @@ Inst_DECODER: DECODER PORT  MAP(
     seg_disp=>segmentos,
     AN=> ANODOS
 );
-end Behavioral;
+end STRUCTURAL;
