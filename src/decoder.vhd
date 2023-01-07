@@ -1,165 +1,97 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
+-- Company:
+-- Engineer:
+--
 -- Create Date: 03.12.2022 13:16:10
--- Design Name: 
+-- Design Name:
+----------------------------------------------------------------------------------
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+entity DECODER is
+    generic (
+        DIVISOR    : positive
+    );
+    port (
+        PW         : in  std_logic_vector(1 downto 0);
+        TIEMPO_DEC : in  unsigned(2 downto 0);
+        CANTIDAD   : in  unsigned(3 downto 0);
+        CLK        : in  std_logic;
+        SEG_DISP   : out std_logic_vector(6 downto 0);
+        AN         : out std_logic_vector(7 downto 0)
+    );
+end DECODER;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+architecture BEHAVIORAL of DECODER is
+    type segment_vector is array(integer range <>) of std_logic_vector(6 downto 0);
 
-entity decoder is
-    Port ( PW :          in std_logic_vector(1 downto 0);
-           Tiempo_dec :  in STD_LOGIC_VECTOR (0 to 2);
-           Cantidad:     in STD_LOGIC_VECTOR (0 to 3);
-           CLK:          in std_logic;
-           
-           seg_disp :    out STD_LOGIC_VECTOR (0 to 6);
-           AN:           out STD_LOGIC_VECTOR (0 to 7)-- escribira true o error
-           );
-end decoder;
-
-architecture Behavioral of decoder is
-
-signal aux_CLK: std_logic;
-begin 
-   
-  CLK_aux : process(CLK)
-    variable cont: integer:=0;
-    begin     
-if rising_edge (CLK) then
-        cont := cont+1;
-    if cont= 100 then -- deberia ser 1.66 para pasar a unos 300HZ aprox
-       cont:=0;
-        aux_CLK <= not aux_CLK;
-    end if; 
- end if;
-end process;
-
-
-process (aux_CLK)
-variable disp0,disp1,disp2,disp3,disp5,disp7:std_logic_vector(0 to 6);
-variable bucle: std_logic_vector(0 to 5):="011111";
+    signal strobe  : std_logic := '0';
+    signal anode   : std_logic_vector(7 downto 0) := (7 => '0', others => '1');
+    signal digsegs : segment_vector(anode'range);
 begin
-if rising_edge (aux_CLK) then
+    AN <= anode;
 
-case PW is 
-    when "00" =>
-         disp0:= "0111000";--F 
-         disp1:="0001000" ;--A
-         disp2:="1111001" ;--I
-         disP3:="1110001" ;--L
-        
-    
-    when "11" => 
-         disp0:="0100000" ;--G 6
-         disp1:="0000001" ;--O
-         disp2:="0000001" ;--O
-         disP3:="1000010";--D 6 invertido
-    when others=>
-         
-         disp0:="1111110" ;
-         disp1:="1111110" ;
-         disp2:="1111110" ;
-         disP3:="1111110";
-         
-       
- END CASE;
- 
- 
- case tiempo_dec is
- 
- when "000" =>
-    disp7:="0000001" ;--0
-  
- when "001" =>
-    disp7:="1001111" ;--1
- when "010" =>
-    disp7:="0010010" ;--2
- when "011" =>
-    disp7:="0000110" ;--3
- when "100" =>
-    disp7:="1001100" ;--4
-when "101" =>
-    disp7:="0100100" ;--5
- when others =>
-    disp7:="1111110" ;--despues de 5 segundos no imprime nada
+    strober: process(CLK)
+        subtype count_t is integer range 0 to DIVISOR - 1;
+        variable count : count_t := count_t'high;
+    begin
+        if rising_edge(CLK) then
+            strobe <= '0';
+            count := count - 1;
+            if count = 0 then
+                strobe <= '1';
+                count := count_t'high;
+            end if;
+        end if;
+    end process;
 
-end case;
+    scanner: process(CLK)
+    begin
+        if rising_edge(CLK) then
+            if strobe = '1' then
+                anode <= anode(0) & anode(anode'high downto 1);
+            end if;
+        end if;
+    end process;
 
+    muxer: with anode select
+        SEG_DISP <= digsegs(0) when "11111110",
+                    digsegs(1) when "11111101",
+                    digsegs(2) when "11111011",
+                    digsegs(3) when "11110111",
+                    digsegs(5) when "11011111",
+                    digsegs(7) when "01111111",
+                    (others => '1') when others;
 
-case cantidad is
- 
- when "0000" =>
-    disp5:="0000001" ; --0
-  
- when "0001" =>
-    disp5:="1001111" ; --1
- when "0010" =>
-    disp5:="0010010" ;--2
- when "0011" =>
-    disp5:="0000110" ;--3
- when "0100" =>
-    disp5:="1001100" ;--4
- when "0101" =>
-    disp5:="0100100" ;--5
-when "0110" => 
-    disp5:="0100000" ;--6
-when "0111" =>
-    disp5:="0001111" ;--7
-when "1000" =>
-    disp5:="0000000" ;--8
-when "1001" =>
-    disp5:="0001100" ;--9
- when others =>
-    disp5:="1111110" ; -- imprime quiones
+    msg_decoder: with PW select
+        digsegs(3 downto 0) <=
+            ("0111000", "0001000", "1111001", "1110001") when "00", -- FAIL
+            ("0100000", "0000001", "0000001", "1000010") when "11", -- GOOD
+            ("1111110", "1111110", "1111110", "1111110") when others;
 
-end case;
+    qty_decoder: with to_integer(CANTIDAD) select
+        digsegs(5) <=
+            "0000001" when 0,
+            "1001111" when 1,
+            "0010010" when 2,
+            "0000110" when 3,
+            "1001100" when 4,
+            "0100100" when 5,
+            "0100000" when 6,
+            "0001111" when 7,
+            "0000000" when 8,
+            "0001100" when 9,
+            "1111110" when others;
 
- 
- CASE  bucle is
-     when "011111"=>
-         seg_disp<= disp0;
-         AN<="01111111";
-    
-    When "101111"=>
-        seg_disp<= disp1;
-         AN<="10111111";
-  
-    when "110111"=>
-        seg_disp<= disp2;
-        AN<="11011111";
-   
-    when "111011"=>
-        seg_disp<= disp3;
-        AN<="11101111";
-        
-    when "111101"=>
-        seg_disp<= disp5;
-        AN<="11111011";
-        
-     when "111110"=>
-        seg_disp<= disp7;
-        AN<="11111110";
-   
-     when others=>  
-         seg_disp<= "1111110";
-        AN<="00001010";
- 
- 
-    end case;
-BUCLE:= bucle(5)& bucle(0 to 4);
- 
-    END IF;   
- end process ;   
-
-end Behavioral;
+    time_decoder: with to_integer(TIEMPO_DEC) select
+        digsegs(7) <=
+            "0000001" when 0,
+            "1001111" when 1,
+            "0010010" when 2,
+            "0000110" when 3,
+            "1001100" when 4,
+            "0100100" when 5,
+            "1111110" when others;
+end BEHAVIORAL;
