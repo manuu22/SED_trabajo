@@ -55,6 +55,6 @@ de nuevo de que no esté marcada la opción "Copy to project".
 
 ## Diagrama de bloques
 
-![Diagrama de bloques 1]("/assets/images/DIBUJO 7-12.png")
+![Diagrama de bloques 1](/assets/images/block_diagram_221207.png)
 
-![Diagrama de bloques 2]("/assets/images/DIBUJO 29-11.png")
+![Diagrama de bloques 2](/assets/images/block_diagram_221129.png)
