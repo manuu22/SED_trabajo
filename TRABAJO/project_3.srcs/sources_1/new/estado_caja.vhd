@@ -14,10 +14,10 @@ entity estado_caja is
 --  Port ( );
 port (
  CLK :      in std_logic;
- SW_caja:   in std_logic;
- PW_RIGTH:  in std_logic_vector(1 downto 0);
+ SW_caja:   in std_logic;--switch para saber si podmeos abrir la caja o está cerrada
+ PW_RIGTH:  in std_logic_vector(1 downto 0);--señal de contraseña correcta
  
- LIGHT :    out std_logic_vector(0 TO 3)
+ LIGHT :    out std_logic_vector(0 TO 3)--luces led para indeicar estado
 
  );
 end estado_caja;
@@ -29,7 +29,7 @@ type STATES is (C_cerrada, C_abriendo, C_abierta);
  signal next_state: STATES;
  
 begin
- state_register: process (SW_caja,CLK)
+ state_register: process (SW_caja,CLK)--funcion que introduce nuevo estado
  begin
     if SW_caja = '0' then
         current_state<= C_cerrada;
@@ -38,7 +38,7 @@ begin
     end if;
  end process;
  
- nextstate_decod: process (SW_caja, current_state)
+ nextstate_decod: process (SW_caja, current_state)--funcion que cambia el nuevo estado
  begin
  next_state <= current_state;
  case current_state is
@@ -60,7 +60,7 @@ begin
  end process;
  
  
- output_decod: process (current_state)
+ output_decod: process (current_state)--funcio que asigna salidas según el estado
  begin
  LIGHT <= (OTHERS => '0');
  case current_state is
