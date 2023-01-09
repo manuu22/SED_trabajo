@@ -122,18 +122,19 @@ begin
              if  numero = "0110" then --6
                 next_state <= Dig2;          
              else 
-                 next_state <= Dig0;
+                 next_state <= Dig0_fail;
                  --intento <= intento -1;
              end if;
           when Dig2 =>
               if  numero = "0010" then --2
-                next_state <= Dig2;          
+                next_state <= Dig3;          
              else 
-                 next_state <= Dig0;
+                 next_state <= Dig0_fail;
                  --intento <= intento -1;
              end if; 
           when Dig3 =>
-           when Dig0_fail =>
+          
+          when Dig0_fail =>
             if  numero = "0101" then --5
                 next_state <= Dig1;
             end if;

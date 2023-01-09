@@ -1,0 +1,13 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../project_3.srcs/sources_1/new/PSWRD_BOTON.vhd" \
+"../../../../project_3.srcs/sources_1/new/Principal.vhd" \
+"../../../../project_3.srcs/sources_1/new/decoder.vhd" \
+"../../../../project_3.srcs/sim_1/new/decoder_tb.vhd" \
+"../../../../project_3.srcs/sources_1/new/edge_detector.vhd" \
+"../../../../project_3.srcs/sources_1/new/estado_caja.vhd" \
+"../../../../project_3.srcs/sources_1/new/sincronizador.vhd" \
+"../../../../project_3.srcs/sim_1/new/top_tb.vhd" \
+
+# Do not sort compile order
+nosort

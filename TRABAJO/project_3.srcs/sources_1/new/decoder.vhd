@@ -8,14 +8,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity decoder is
     Port ( PW :          in std_logic_vector(1 downto 0);
@@ -38,7 +30,7 @@ begin
     begin     
 if rising_edge (CLK) then
         cont := cont+1;
-    if cont= 100 then -- deberia ser 1.66 para pasar a unos 300HZ aprox
+    if cont= 10**5 then -- deberia ser 1.66 para pasar a unos 300HZ aprox
        cont:=0;
         aux_CLK <= not aux_CLK;
     end if; 
